@@ -28,13 +28,13 @@
 <body>
     <div class="container-fluid main-page">
         <div class="app-main">
-            <nav class="sidebar bg-primary">
+            <!-- <nav class="sidebar bg-primary">
                 <ul>
                     <li>
                         <a href="index.html"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
                     </li>
                     <li>
-                        <a href="order.html"><i class="fa-solid fa-cart-shopping ico-side"></i>Quản kí đơn hàng</a>
+                        <a href="order.html"><i class="fa-solid fa-cart-shopping ico-side"></i>Quản lí đơn hàng</a>
                     </li>
                     <li>
                         <a href="caterogies.html"><i class="fa-solid fa-folder-open ico-side"></i>Quản lí danh muc</a>
@@ -46,7 +46,7 @@
                         <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
             <div class="main-content">
                 <h3 class="title-page">
                     Quản lí đơn hàng

@@ -46,7 +46,7 @@
   <body>
     <div class="container-fluid main-page">
       <div class="app-main">
-        <nav class="sidebar bg-primary">
+        <!-- <nav class="sidebar bg-primary">
           <ul>
             <li>
               <a href="index.html"
@@ -76,7 +76,7 @@
               >
             </li>
           </ul>
-        </nav>
+        </nav> -->
         <div class="main-content">
           <h3 class="title-page">Sản phẩm</h3>
           <div class="d-flex justify-content-end">

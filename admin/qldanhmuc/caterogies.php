@@ -28,7 +28,7 @@
 <body>
     <div class="container-fluid main-page">
         <div class="app-main">
-            <nav class="sidebar bg-primary">
+            <!-- <nav class="sidebar bg-primary">
                 <ul>
                     <li>
                         <a href="index.html"><i class="fa-solid fa-house ico-side"></i>Dashboards</a>
@@ -46,13 +46,13 @@
                         <a href="user.html"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
             <div class="main-content">
                 <h3 class="title-page">
-                    Thành viên
+                    Danh mục
                 </h3>
                 <div class="d-flex justify-content-end">
-                    <a href="" class="btn btn-primary mb-2">Thêm thành viên</a>
+                    <a href="#" class="btn btn-primary mb-2">Thêm danh mục</a>
                 </div>
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
@@ -72,7 +72,12 @@
                             <td>Edinburgh</td>
                             <td>61</td>
                             <td>2011-04-25</td>
-                            <td>$320,800</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Garrett Winters</td>
@@ -80,7 +85,12 @@
                             <td>Tokyo</td>
                             <td>63</td>
                             <td>2011-07-25</td>
-                            <td>$170,750</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Serge Baldwin</td>
@@ -88,7 +98,12 @@
                             <td>Singapore</td>
                             <td>64</td>
                             <td>2012-04-09</td>
-                            <td>$138,575</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Zenaida Frank</td>
@@ -96,7 +111,12 @@
                             <td>New York</td>
                             <td>63</td>
                             <td>2010-01-04</td>
-                            <td>$125,250</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Zorita Serrano</td>
@@ -104,7 +124,12 @@
                             <td>San Francisco</td>
                             <td>56</td>
                             <td>2012-06-01</td>
-                            <td>$115,000</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Jennifer Acosta</td>
@@ -112,7 +137,12 @@
                             <td>Edinburgh</td>
                             <td>43</td>
                             <td>2013-02-01</td>
-                            <td>$75,650</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Cara Stevens</td>
@@ -120,7 +150,12 @@
                             <td>New York</td>
                             <td>46</td>
                             <td>2011-12-06</td>
-                            <td>$145,600</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Hermione Butler</td>
@@ -128,47 +163,12 @@
                             <td>London</td>
                             <td>47</td>
                             <td>2011-03-21</td>
-                            <td>$356,250</td>
-                        </tr>
-                        <tr>
-                            <td>Lael Greer</td>
-                            <td>Systems Administrator</td>
-                            <td>London</td>
-                            <td>21</td>
-                            <td>2009-02-27</td>
-                            <td>$103,500</td>
-                        </tr>
-                        <tr>
-                            <td>Jonas Alexander</td>
-                            <td>Developer</td>
-                            <td>San Francisco</td>
-                            <td>30</td>
-                            <td>2010-07-14</td>
-                            <td>$86,500</td>
-                        </tr>
-                        <tr>
-                            <td>Shad Decker</td>
-                            <td>Regional Director</td>
-                            <td>Edinburgh</td>
-                            <td>51</td>
-                            <td>2008-11-13</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>Michael Bruce</td>
-                            <td>Javascript Developer</td>
-                            <td>Singapore</td>
-                            <td>29</td>
-                            <td>2011-06-27</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011-01-25</td>
-                            <td>$112,000</td>
+                            <td>
+                                <a href="#" class="btn btn-warning"><i
+                                        class="fa-solid fa-pen-to-square"></i> Sửa</a>
+                                <a href="#" class="btn btn-danger"><i
+                                        class="fa-solid fa-trash"></i> Xóa</a>
+                            </td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -185,6 +185,7 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/main.js"></script>
     <script>
         new DataTable('#example');
     </script>
