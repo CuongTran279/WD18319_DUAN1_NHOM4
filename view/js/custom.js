@@ -28,3 +28,7 @@ $(document).on("click", '[data-toggle="lightbox"]', function (event) {
     event.preventDefault();
     $(this).ekkoLightbox();
 });
+//Tăng số lượng
+var plus = document.querySelector("#plus");
+var minus = document.querySelector("#minus");
+var quantity = document.querySelector(".quantity").value;
