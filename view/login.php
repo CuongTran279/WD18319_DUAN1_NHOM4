@@ -7,9 +7,9 @@
             <img src="view/images/img-login-banner.jpg" alt="">
         </div>
         <div class="col">
-            <form action="">
+            <form action="index.php?act=login" method="post">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com">
+                    <input type="text" class="form-control " id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Tên đăng nhập</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -21,8 +21,8 @@
                         <input class="form-check-input" type="checkbox" name="remember"> Nhớ tài khoản
                     </label>
                 </div>
-                <p>Chưa có tài khoản ? <a class="link-opacity-75-hover" href="index.php?act=resignter">Đăng ký</a></p>
-                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                <p>Chưa có tài khoản ? <a class="link-opacity-75-hover" href="index.php?act=dangky">Đăng ký</a></p>
+                <input type="submit" class="btn btn-primary" name="dangnhap" value="Đăng Nhập">
             </form>
         </div>
     </div>

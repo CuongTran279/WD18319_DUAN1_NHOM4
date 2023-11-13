@@ -6,25 +6,29 @@
             <img src="view/images/banner_dangky.png" alt="">
         </div>
         <div class="col">
-            <form action="">
+            <form action="index.php?act=dangky" method="post">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                     <label for="floatingInput">Email</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control " id="floatingInput" placeholder="name@example.com">
+                    <input type="text" class="form-control " id="floatingInput" name="name" placeholder="name@example.com">
                     <label for="floatingInput">Tên đăng nhập</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <input type="password" class="form-control" name="pass" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control " id="floatingInput" placeholder="name@example.com">
+                    <input type="password" class="form-control" name="re_pass" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Nhập lại Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control " name="address" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Địa chỉ</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control " id="floatingInput" placeholder="name@example.com">
+                    <input type="text" class="form-control " name="phone" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Số điện thoại</label>
                 </div>
                 <div class="form-check mb-3">
@@ -33,8 +37,13 @@
                     </label>
                 </div>
                 <p>Đã có tài khoản ? <a class="link-opacity-75-hover" href="index.php?act=login">Đăng nhập</a></p>
-                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                <input type="submit" class="btn btn-primary" name="dangky" value="Đăng ký">
             </form>
+            <?php
+                if(isset($thongbao)&&($thongbao != "")){
+                    echo $thongbao;
+                }
+            ?>
         </div>
     </div>
     </div>
