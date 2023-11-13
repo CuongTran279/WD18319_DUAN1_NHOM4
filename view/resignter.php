@@ -8,28 +8,34 @@
         <div class="col">
             <form action="index.php?act=dangky" method="post">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                    <input type="text" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
                     <label for="floatingInput">Email</label>
+                    <p class="text-danger"><?php echo $errEmail?></p>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control " id="floatingInput" name="name" placeholder="name@example.com">
                     <label for="floatingInput">Tên đăng nhập</label>
+                    <p class="text-danger"><?php echo $errName?></p>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="pass" id="floatingPassword" placeholder="Password">
+                    <input type="text" class="form-control" name="pass" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
+                    <p class="text-danger"><?php echo $errPass?></p>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="re_pass" id="floatingPassword" placeholder="Password">
+                    <input type="text" class="form-control" name="re_pass" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Nhập lại Password</label>
+                    <p class="text-danger"><?php echo $errRepass?></p>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control " name="address" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Địa chỉ</label>
+                    <p class="text-danger"><?php echo $errAddress?></p>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control " name="phone" id="floatingInput" placeholder="name@example.com">
                     <label for="floatingInput">Số điện thoại</label>
+                    <p class="text-danger"><?php echo $errPhone?></p>
                 </div>
                 <div class="form-check mb-3">
                     <label class="form-check-label">
