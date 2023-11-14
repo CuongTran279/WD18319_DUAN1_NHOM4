@@ -50,14 +50,25 @@
               <span class="s-3"> </span>
             </button>
             <div id="myNav" class="overlay">
+
               <div class="overlay-content">
                 <a href="index.php">Trang chủ</a>
                 <a href="index.php?act=about">Về chúng tôi</a>
                 <a href="index.php?act=shop">Danh mục</a>
                 <a href="index.php?act=blog">Blog</a>
-                <a href="index.php?act=cart">Giỏ hàng</a>
+                <?php if(!isset($_SESSION['user'])){?>
                 <a href="index.php?act=login">Đăng nhập</a>
-                <input type="text" name="" id="" class="kyw">
+                <?php
+                }else{
+                  extract($_SESSION['user']);?>
+                  <a href="index.php?act=cart">Giỏ hàng</a>
+                  <a href="index.php?act=out">Đăng xuất tài khoản</a>
+                  <?php if (($role == 1)) {
+                ?>
+                    <a href="admin/index.php">Truy cập Admin</a>
+                  <?php } ?>
+                  <input type="text" name="" id="" class="kyw">
+                <?php } ?>
               </div>
             </div>
           </div>
