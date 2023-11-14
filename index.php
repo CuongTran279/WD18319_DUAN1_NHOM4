@@ -39,26 +39,26 @@
                     $re_pass =$_POST['re_pass'];
                     $phone =$_POST['phone'];
                     $address =$_POST['address'];
-                    // if(empty($email)){
-                    //     $errEmail = "Vui lòng nhập email";
-                    // }
-                    // if(empty($address)){
-                    //     $errAddress = "Vui lòng nhập địa chỉ";
-                    // }
-                    // if(empty($name)){
-                    //     $errName = "Vui lòng nhập tên";
-                    // }
-                    // if(empty($password)){gi
-                    //     $errPass = "Vui lòng nhập pass";
-                    // }
-                    // if(empty($phone)){
-                    //     $errPhone = "Vui lòng nhập SĐT";
-                    // }
-                    // if(empty($re_pass)){
-                    //     $errRepass = "Vui lòng nhập lại mật khẩu";
-                    // }
-                    // if(!empty($email) && !empty($address) && !empty($name) && !empty($pass) && !empty($phone) && !empty($re_pass)){
-                    //     // $tk = check_taikhoan($name,$password);
+                    if(empty($email)){
+                        $errEmail = "Vui lòng nhập email";
+                    }
+                    if(empty($address)){
+                        $errAddress = "Vui lòng nhập địa chỉ";
+                    }
+                    if(empty($name)){
+                        $errName = "Vui lòng nhập tên";
+                    }
+                    if(empty($password)){
+                        $errPass = "Vui lòng nhập pass";
+                    }
+                    if(empty($phone)){
+                        $errPhone = "Vui lòng nhập SĐT";
+                    }
+                    if(empty($re_pass)){
+                        $errRepass = "Vui lòng nhập lại mật khẩu";
+                    }
+                    // if(isset($email) && isset($address) && isset($name) && isset($pass) && isset($phone) && isset($re_pass)){
+                    //    $tk = check_taikhoan($name,$password);
                         // if($re_pass !== $password){
                         //     $errRepass = "Vui lòng nhập lại mật khẩu";}
                         // if($name !== $tk['name']){
@@ -72,7 +72,7 @@
                         // if($re_pass == $password && $name !== $tk['name']){
                             insert_taikhoan($name,$password,$email,$phone,$address);
                             $thongbao = "Đăng ký thành công";
-                        
+                               
                 }
                 include "view/resignter.php";
             break;
