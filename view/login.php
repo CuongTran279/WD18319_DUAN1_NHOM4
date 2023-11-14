@@ -11,10 +11,12 @@
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control " id="floatingInput" name="name" placeholder="name@example.com">
                     <label for="floatingInput">Tên đăng nhập</label>
+                    <p class="text-danger"><?php echo $errName?></p>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" name="pass" id="floatingPassword" placeholder="Password">
                     <label for="floatingPassword">Password</label>
+                    <p class="text-danger"><?php echo $errPass?></p>
                 </div>
                 <div class="form-check mb-3">
                     <label class="form-check-label">
