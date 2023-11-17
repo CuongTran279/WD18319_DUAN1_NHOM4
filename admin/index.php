@@ -30,6 +30,31 @@
                 }
                 include "qldanhmuc/addDanhmuc.php";
             break;
+            case 'xoaDm':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $id = $_GET['id'];
+                    delete_danhmuc($_GET['id']);
+                }
+                $lisdm = select_all_danhmuc();
+                include "qldanhmuc/caterogies.php";
+            break;
+            case 'suaDm':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $dm = select_id_danhmuc($_GET['id']);
+                }
+                $lisdm = select_all_danhmuc();
+                include "qldanhmuc/updateDanhmuc.php";
+            break;
+            case 'updtDm':
+                if(isset($_POST['updtDm']) && ($_POST['updtDm'])){
+                    $name = $_POST['name'];
+                    $id = $_POST['id'];
+                    update_danhmuc($name,$id);
+                    $thongbao = "Cập nhật thanh cong";
+                }
+                $lisdm = select_all_danhmuc();
+                include "qldanhmuc/caterogies.php";
+            break;
 // Danh mục
 
 // Sản phẩm
@@ -63,7 +88,43 @@
                 $lisdm = select_all_danhmuc();
                 include "qlsanpham/addProduct.php";
             break;
-            
+            case 'xoasp':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $id = $_GET['id'];
+                    delete_products($_GET['id']);
+                }
+                $lisdm = select_all_danhmuc();
+                $lissp = select_all_products();
+                include "qlsanpham/Products.php";
+            break;
+            case 'suasp':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $sp = select_id_products($_GET['id']);
+                }
+                $lisdm = select_all_danhmuc();
+                include "qlsanpham/updateSanPham.php";
+            break;
+            case 'updtSp':
+                if(isset($_POST['updtSp']) && ($_POST['updtSp'])){
+                    $name = $_POST['name'];
+                    $id_categories = $_POST['id_categories'];
+                    $id = $_POST['id'];
+                    $price = $_POST['price'];
+                    $description= $_POST['description'];
+                    $img = $_FILES['image']['name'];
+                    $target_dir = "../upload/";
+                    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                        //echo "The file ". htmlspecialchars( basename( $_FILES["img"]["name"])). " has been uploaded.";
+                    } else {
+                      //echo "Sorry, there was an error uploading your file.";
+                    }
+                    update_products($name,$id_categories,$price,$description,$img,$id);
+                    $thongbao = "Cập nhật thanh cong";
+                }
+                $lissp = select_all_products();
+                include "qlsanpham/Products.php";
+            break;
 // Sản phẩm
             case 'user':
                 include "qlthanhvien/user.php";
