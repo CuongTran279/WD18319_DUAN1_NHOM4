@@ -7,14 +7,13 @@
         <div class="position-fixed  text-center ml-2">
           <div class="card" style="width: 18rem;">
             <div class="card-header">
-              <a href="index.php?act=shop" class="text-dark link-offset-2 link-underline link-underline-opacity-0">Danh mục sản phẩm</a>
+                <a href="index.php?act=shop" class="text-dark link-offset-2 link-underline link-underline-opacity-0">Danh mục sản phẩm</a>
             </div>
             <ul class="list-group list-group-flush">
               <?php
                   foreach($dsdm as $dm){
-                      extract($dm);
-                      $linkdm = "index.php?act=sanpham&id_categories=".$id;
-                      echo '<li class="list-group-item"><a class="text-dark" href="'.$linkdm.'">'.$name.'</a></li>';}
+                      $linkdm = "index.php?act=sanpham&id_categories=".$dm['id'];
+                      echo '<li class="list-group-item"><a class="text-dark" href="'.$linkdm.'">'.$dm['name'].'</a></li>';}
               ?>
             </ul>
             <form class="d-flex justify-content-between mb-2">
@@ -33,13 +32,13 @@
       <div class="col-8 ">
         <div class="heading_container heading_center">
           <h2>
-            Sản phẩm
+            Sản phẩm - <strong><?=$dm['name']?></strong>
           </h2>
         </div>
         <div class="row">
           <?php
           $i = 0;
-          foreach ($spnew as $sp) {
+          foreach ($dssp as $sp) {
             extract($sp);
             $hinh = $imgpath . $img;
             // if (($i == 2) || ($i == 5) || ($i == 8)) {

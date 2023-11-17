@@ -82,6 +82,7 @@
           <thead>
             <tr>
               <th></th>
+              <th>STT</th>
               <th>ID</th>
               <th>TÊN</th>
               <th>Ảnh</th>
@@ -91,6 +92,7 @@
           </thead>
           <tbody>
             <?php
+            $i = 1;
             foreach ($lissp as $item) {
               extract($item);
               $imgpath = "../upload/" . $img;
@@ -103,6 +105,7 @@
               $sua = "index.php?act=suasp&id=" . $id;
               echo '<tr>
                     <td><input type="checkbox" class="form-check-input"></td>
+                    <td>'.$i++.'</td>
                     <td>' . $id . '</td>
                     <td>' . $name . '</td>
                     <td>' . $hinh . '</td>
@@ -117,6 +120,7 @@
           <tfoot>
             <tr>
               <th></th>
+              <th>STT</th>
               <th>ID</th>
               <th>TÊN</th>
               <th>Ảnh</th>

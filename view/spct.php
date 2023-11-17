@@ -1,9 +1,15 @@
 <div class="layout_padding  px-5">
     <div class="container">
+         <?php
+            extract($one);
+            ?>
         <div class=" row align-items-center login-form">
             <div class="col pl-0 ">
                 <div class="row-6 img_to">
-                    <img src="view/images/banner_dangky.png" alt="">
+                    <?php
+                        $hinh = $imgpath . $img;
+                        echo '<img src="'.$hinh.'" alt="" class="object-fit-contain " style="width:500px;height:500px">'
+                    ?>
                 </div>
                 <!-- <div class="row img_con_ct container pl-0">
                 <div class="col">
@@ -19,16 +25,16 @@
             </div>
             <div class="col pr-4 pl-4 ctsp">
                 <div class="row">
-                    <p>Mã Sản phẩm</p>
+                    <p >Mã Sản phẩm</p>
                 </div>
                 <div class="row">
-                    <p>Tên sản phẩm</p>
+                    <p>Tên sản phẩm : <?=$name?></p>
                 </div>
                 <div class="row">
-                    <p>GIá</p>
+                    <p>GIá : <?=$price?></p>
                 </div>
                 <div class="row-4">
-                    <p>Mô tả - Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>Mô tả : <?=$description?></p>
                 </div>
                 <div class="form-outline pb-2 sl ">
                     <div class="title_sl pb-2">Số lượng</div>
@@ -93,86 +99,26 @@
                     </h2>
                 </div>
                 <div class="sptt pt-3 ">
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="box">
-                            <a href="index.php?act=spct">
-                                <div class="img-box">
-                                    <img src="view/images/p1.png" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h6>Necklace</h6>
-                                    <h6>Price<span>$200</span></h6>
-                                </div>
-                                <div class="new">
-                                    <span>New</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="box">
-                            <a href="index.php?act=spct">
-                                <div class="img-box">
-                                    <img src="view/images/p1.png" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h6>Necklace</h6>
-                                    <h6>Price<span>$200</span></h6>
-                                </div>
-                                <div class="new">
-                                    <span>New</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="box">
-                            <a href="index.php?act=spct">
-                                <div class="img-box">
-                                    <img src="view/images/p1.png" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h6>Necklace</h6>
-                                    <h6>Price<span>$200</span></h6>
-                                </div>
-                                <div class="new">
-                                    <span>New</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="box">
-                            <a href="index.php?act=spct">
-                                <div class="img-box">
-                                    <img src="view/images/p1.png" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h6>Necklace</h6>
-                                    <h6>Price<span>$200</span></h6>
-                                </div>
-                                <div class="new">
-                                    <span>New</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="box">
-                            <a href="index.php?act=spct">
-                                <div class="img-box">
-                                    <img src="view/images/p1.png" alt="">
-                                </div>
-                                <div class="detail-box">
-                                    <h6>Necklace</h6>
-                                    <h6>Price<span>$200</span></h6>
-                                </div>
-                                <div class="new">
-                                    <span>New</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <?php
+                        foreach ($spcl as $sp) {
+                            extract($sp);
+                            $hinh = $imgpath . $sp['img'];
+                            echo    '<div class="col-sm-6 col-md-4 col-lg-3">
+                                        <div class="box">
+                                            <a href="index.php?act=spct&idsp='.$id.'">
+                                            <div class="img-box">
+                                                <img src="'.$hinh.'" alt="">
+                                            </div>
+                                            <div class="detail-box">
+                                                <h6>'.$name.'</h6>
+                                                <h6>Price<span>$'.$price.'</span></h6>
+                                            </div>
+                                            <div class="new"><span>New</span></div>
+                                            </a>
+                                        </div>
+                                    </div>';
+                        }
+                    ?>
                 </div>
             </div>
         </div>
