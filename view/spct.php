@@ -5,23 +5,12 @@
             ?>
         <div class=" row align-items-center login-form">
             <div class="col pl-0 ">
-                <div class="row-6 img_to">
+                <div class="row-6 img_to border text-center">
                     <?php
                         $hinh = $imgpath . $img;
                         echo '<img src="'.$hinh.'" alt="" class="object-fit-contain " style="width:500px;height:500px">'
                     ?>
                 </div>
-                <!-- <div class="row img_con_ct container pl-0">
-                <div class="col">
-                    <button><img src="view/images/o1.jpg" alt="" class="col"></button>
-                </div>
-                <div class="col">
-                    <button><img src="view/images/o2.jpg" alt="" class="col"></button>
-                </div>
-                <div class="col">
-                    <button><img src="view/images/o3.jpg" alt="" class="col"></button>
-                </div>
-            </div> -->
             </div>
             <div class="col pr-4 pl-4 ctsp">
                 <div class="row">
@@ -106,7 +95,7 @@
                             echo    '<div class="col-sm-6 col-md-4 col-lg-3">
                                         <div class="box">
                                             <a href="index.php?act=spct&idsp='.$id.'">
-                                            <div class="img-box">
+                                            <div class="img-box ">
                                                 <img src="'.$hinh.'" alt="">
                                             </div>
                                             <div class="detail-box">
