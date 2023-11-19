@@ -124,6 +124,10 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             session_unset();
             header("Location:index.php");
         break;
+// cart ----------
+        case 'cart':
+            include "view/cart.php";
+        break;
         case 'spct':
             include "view/spct.php";
             break;
