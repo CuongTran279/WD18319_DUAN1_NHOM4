@@ -57,8 +57,14 @@
                     <h6>'.$name.'</h6>
                     <h6>Price<span>$'.$price.'</span></h6>
                   </div>
-                  <div class="new"><span>New</span></div>
                 </a>
+                <form action="index.php?act=addCart" method="post">
+                  <input type="hidden" name="id" value="'.$id.'">
+                  <input type="hidden" name="img" value="'.$hinh.'">
+                  <input type="hidden" name="name" value="'.$name.'">
+                  <input type="hidden" name="price" value="'.$price.'">
+                  <a href=""><div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div></a>
+                </form>
               </div>
             </div>';
           }

@@ -36,32 +36,47 @@
         </h2>
       </div>
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p1.png" alt="">
+        <?php
+          $i = 0;
+          foreach ($spnew as $sp) {
+            extract($sp);
+            $hinh = $imgpath . $img;
+            // if (($i == 2) || ($i == 5) || ($i == 8)) {
+            //   $mr = "";
+            // } else {
+            //   $mr = "mr";
+            // }
+            echo '<div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="box">
+                <a href="index.php?act=spct&idsp='.$id.'">
+                  <div class="img-box">
+                    <img src="'.$hinh.'" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h6>'.$name.'</h6>
+                    <h6>Price<span>$'.$price.'</span></h6>
+                  </div>
+                </a>
+                <form action="index.php?act=addCart" method="post">
+                  <input type="hidden" name="id" value="'.$id.'">
+                  <input type="hidden" name="img" value="'.$hinh.'">
+                  <input type="hidden" name="name" value="'.$name.'">
+                  <input type="hidden" name="price" value="'.$price.'">
+                  <a href=""><div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div></a>
+                </form>
               </div>
-              <div class="detail-box">
-                <h6>
-                  Necklace
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $200
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
+            </div>';
+          }
+        ?>
+        
+        <!-- <form action="" method="post">
+          <input type="hidden" name="" value="'.$id.'">
+          <input type="hidden" name="" value="'.$hinh.'">
+          <input type="hidden" name="" value="'.$name.'">
+          <input type="hidden" name="" value="'.$price.'">
+          <input type="submit" value="<div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div>">
+        </form> -->
+        <!-- <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
             <a href="">
               <div class="img-box">
@@ -85,8 +100,8 @@
               </div>
             </a>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
+        </div> -->
+        <!-- <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="box">
             <a href="">
               <div class="img-box">
@@ -235,7 +250,7 @@
               </div>
             </a>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="btn-box">
         <a href="">
