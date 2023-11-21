@@ -56,4 +56,9 @@
         $lissp = pdo_query($sql);
         return $lissp;
     }
+    function cart_test(){
+        $sql = "SELECT * FROM `products` WHERE `id` IN (".implode(",",array_keys($_SESSION['cart'])).")";
+        $testcart = pdo_query($sql);
+        return $testcart;
+    }
 ?>

@@ -6,6 +6,7 @@ include "global.php";
 include "model/taikhoan.php";
 include "model/danhmuc.php";
 include "model/sanpham.php";
+include "model/cart.php";
 $spnew = select_all_home_products();
 $dsdm = select_all_danhmuc();
 if(!isset($_SESSION['cart'])){
@@ -132,6 +133,21 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             include "view/cart.php";
         break;
         case 'addCart':
+            if(isset($_POST['addCart']) && ($_POST['addCart'])){
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $price = $_POST['price'];
+                $quantity = $_POST['quantity'];
+                $img = $_POST['img'];
+                foreach($_POST['quantity'] as $id => $quantity){
+                    $_SESSION['cart'][$id] = $quantity;
+                }
+            }
+            if(!empty($_SESSION['cart'])){
+                //SELECT * FROM `products` WHERE `id` IN (10,22,1)
+                // var_dump(implode(",",array_keys($_SESSION['cart'])));exit;
+                $testcart = cart_test();
+            }
             include "view/cart.php";
         break;
         case 'spct':

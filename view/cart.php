@@ -79,21 +79,28 @@
               <tr>
                 <th scope="col">STT</th>
                 <th scope="col">ẢNh</th>
-                <th scope="col">Tên</th><th scope="col">Số Lượng</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Số Lượng</th>
                 <th scope="col">Giá</th>
-                
                 <th scope="col">Xóa</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td><input type="number" name="" id="" value="1" style="font-size: 20px;"></td>
-                <td>52523</td>
-                <td>Xóa</td>
-              </tr>
+              <?php
+                $i = 1;
+                foreach($testcart as $item){
+                  extract($item);
+                  $hinh = $imgpath . $item['img'];
+              ?>
+                <tr>
+                  <th scope="row"><?=$i++?></th>
+                  <td><img src="<?=$hinh?>" alt="" style="width: 60px;height: 70px;"></td>
+                  <td><?=$name?></td>
+                  <td><input type="number" name="quantity[<?=$id?>]" id="" value="<?=$_SESSION['cart'][$id]?>" style="font-size: 20px;"></td>
+                  <td><?=$price?></td>
+                  <td>Xóa</td>
+                </tr>
+              <?php $i++; }?>
               <tr>
                 <th></th>
                 <th></th>
