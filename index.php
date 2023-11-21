@@ -8,6 +8,9 @@ include "model/danhmuc.php";
 include "model/sanpham.php";
 $spnew = select_all_home_products();
 $dsdm = select_all_danhmuc();
+if(!isset($_SESSION['cart'])){
+    $_SESSION['cart'] = array();
+}
 if (isset($_GET["act"]) && $_GET["act"] != "") {
     $act = $_GET['act'];
     switch ($act) {
@@ -126,6 +129,9 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         break;
 // cart ----------
         case 'cart':
+            include "view/cart.php";
+        break;
+        case 'addCart':
             include "view/cart.php";
         break;
         case 'spct':

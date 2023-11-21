@@ -40,10 +40,14 @@
                     </div>
 
                 </div>
-                <div class="row-2 pt-2">
-                    <button type="submit" class="btn btn-dark">Thêm vào giỏ hàng</button>
-                    <button type="submit" class="btn btn-danger">Mua ngay</button>
-                </div>
+                <form action="index.php?act=addCart" class="row-2 pt-2">
+                    <input type="hidden" name="id" value="$id">
+                    <input type="hidden" name="img" value="$hinh">
+                    <input type="hidden" name="name" value="<?=$name?>">
+                    <input type="hidden" name="price" value="$price">
+                    <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-dark">
+                </form>
+                
             </div>
         </div>
         <div class="row layout_padding">
@@ -92,20 +96,26 @@
                         foreach ($spcl as $sp) {
                             extract($sp);
                             $hinh = $imgpath . $sp['img'];
-                            echo    '<div class="col-sm-6 col-md-4 col-lg-3">
-                                        <div class="box">
-                                            <a href="index.php?act=spct&idsp='.$id.'">
-                                            <div class="img-box ">
-                                                <img src="'.$hinh.'" alt="">
-                                            </div>
-                                            <div class="detail-box">
-                                                <h6>'.$name.'</h6>
-                                                <h6>Price<span>$'.$price.'</span></h6>
-                                            </div>
-                                            <div class="new"><span>New</span></div>
-                                            </a>
-                                        </div>
-                                    </div>';
+                            echo '<div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="box">
+                    <a href="index.php?act=spct&idsp='.$id.'">
+                    <div class="img-box">
+                        <img src="'.$hinh.'" alt="">
+                    </div>
+                    <div class="detail-box">
+                        <h6>'.$name.'</h6>
+                        <h6>Price<span>$'.$price.'</span></h6>
+                    </div>
+                    </a>
+                <form action="index.php?act=addCart" method="post">
+                  <input type="hidden" name="id" value="'.$id.'">
+                  <input type="hidden" name="img" value="'.$hinh.'">
+                  <input type="hidden" name="name" value="'.$name.'">
+                  <input type="hidden" name="price" value="'.$price.'">
+                  <a href=""><div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div></a>
+                </form>
+              </div>
+            </div>';
                         }
                     ?>
                 </div>

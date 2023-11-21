@@ -31,4 +31,7 @@ $(document).on("click", '[data-toggle="lightbox"]', function (event) {
 //Tăng số lượng
 var plus = document.querySelector("#plus");
 var minus = document.querySelector("#minus");
-var quantity = document.querySelector(".quantity").value;
+var quantity = document.querySelector("#typeNumber").value;
+plus.addEventListener('click',function(){
+    quantity++;
+})
