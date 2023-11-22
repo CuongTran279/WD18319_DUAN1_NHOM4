@@ -69,50 +69,63 @@
     <section class="blog_section layout_padding">
       <div class="container">
         <div class="heading_container">
-        <div class="heading_container heading_center mb-2">
-          <h2>
-            Giỏ hàng
-          </h2>
-        </div>
-          <table class="table text-center justify-center">
-            <thead>
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">ẢNh</th>
-                <th scope="col">Tên</th>
-                <th scope="col">Số Lượng</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Xóa</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-                $i = 1;
-                foreach($testcart as $item){
-                  extract($item);
-                  $hinh = $imgpath . $item['img'];
-              ?>
+          <form action="index.php?act=cart" method="post" class="container">
+            <div class="mb-2 d-flex justify-content-between">
+              <a href="index.php?act=shop"><input class="btn btn-dark" type="button" value="Tiếp tục mua hàng"></a>
+              <h2>
+                Giỏ hàng
+              </h2>
+              <input class="btn btn-dark" type="submit" value="Cập nhật giỏ hàng" name="updtQuantt">
+            </div>
+            <table class="table text-center justify-center">
+              <thead>
                 <tr>
-                  <th scope="row"><?=$i++?></th>
-                  <td><img src="<?=$hinh?>" alt="" style="width: 60px;height: 70px;"></td>
-                  <td><?=$name?></td>
-                  <td><input type="number" name="quantity[<?=$id?>]" id="" value="<?=$_SESSION['cart'][$id]?>" style="font-size: 20px;"></td>
-                  <td><?=$price?></td>
-                  <td>Xóa</td>
+                  <th scope="col"></th>
+                  <th scope="col">ẢNh</th>
+                  <th scope="col">Tên</th>
+                  <th scope="col">Giá</th>
+                  <th scope="col">Số lượng</th>
+                  <th scope="col">Thành tiền</th>
+                  <th scope="col" ></th>
                 </tr>
-              <?php $i++; }?>
-              <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th>Tổng tiền</th>
-                <th>246187120948012</th>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <?php
+                  $i = 1;
+                  $tt = 0;
+                  if(!empty($testcart)){
+                      foreach($testcart as $item){
+                      extract($item);
+                      $hinh = $imgpath . $item['img'];
+                    echo '<tr>
+                              <td><div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                              </div></td>
+                              <a href="index.php?act=spct&idsp='.$id.'">
+                                <td><img src="'.$hinh.'" alt="" style="width: 60px;height: 70px;"></td>
+                                <td class="text-uppercase">'.$name.'</td>
+                              </a><td class="text-danger ">'.$price.'</td>
+                              <td><input type="number" name="quantity['.$id.']" id="" value="'.$_SESSION['cart'][$id].'" style="font-size: 20px;"></td>
+                              <td class="text-danger ">'.$price * $_SESSION['cart'][$id].'</td>
+                              <td><a href="index.php?act=delCart&id='.$id.'"><input class="btn btn-danger" type="button" value="Xóa"></a></td>
+                          </tr>';
+                          $tt += $price * $_SESSION['cart'][$id];
+                $i++; } ?>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Tổng tiền</th>
+                  <th><?=$tt?> đ</th>
+                </tr>
+                <?php }?>
+              </tbody>
+            </table>
+            <a href="index.php?act=datHang"><input type="button" value="Mua hàng" class="btn btn-dark" name="muaHang"></a>
+          </form>
         </div>
-        <button class="btn btn-dark">Mua hàng</button>
+        
       </div>
     </section>
   </body>
