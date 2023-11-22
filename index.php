@@ -6,8 +6,23 @@ include "global.php";
 include "model/taikhoan.php";
 include "model/danhmuc.php";
 include "model/sanpham.php";
+include "model/cart.php";
 $spnew = select_all_home_products();
+$testuser = check_taikhoan_name();
+$userId = $testuser['id'];
 $dsdm = select_all_danhmuc();
+    function updtCart($add = false){
+            foreach($_POST['quantity'] as $id => $quantity){
+                    if($add){
+                        $_SESSION['cart'][$id] += $quantity;
+                    }else{
+                        $_SESSION['cart'][$id] = $quantity;
+                    }
+            }
+        // }else{
+        //     echo '<script type="text/javascript"> window.onload = function () { alert("Giỏ hàng rỗng, vui lòng mua hàng"); }</script>';
+        // }
+    }
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
@@ -129,17 +144,109 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         break;
 // cart ----------
         case 'cart':
+            if(empty($_SESSION['cart'])){
+                echo '<script type="text/javascript"> window.onload = function () { alert("Giỏ hàng rỗng, vui lòng mua hàng"); }</script>';
+            }else{
+                $testcart = cart_test();
+                if(isset($_POST['updtQuantt'])){
+                updtCart();
+            }
+            }
             include "view/cart.php";
         break;
         case 'addCart':
+            if(isset($_POST['addCart']) && ($_POST['addCart'])){
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $price = $_POST['price'];
+                $quantity = $_POST['quantity'];
+                $img = $_POST['img'];
+                updtCart(true);
+                header("Location:index.php?act=cart");
+            }
+            if(!empty($_SESSION['cart'])){
+                $testcart = cart_test();
+            }
             include "view/cart.php";
+        break;
+        case 'delCart':
+            if(isset($_GET['id'])){
+                unset($_SESSION['cart'][$_GET['id']]);
+            }else{
+                $_SESSION['cart']=[];
+            }
+            header("Location:index.php?act=cart");
+        break;
+        case 'datHang':
+            $errEmail = $errName = $errPass = $errRepass= $errPttt = $errAddress = $errPhone = "";
+            if(!empty($_SESSION['cart'])){
+                $testcart = cart_test();
+            }else{
+                echo '<script type="text/javascript"> window.onload = function () { alert("Giỏ hàng rỗng, vui lòng mua hàng"); }</script>';
+            }
+            if(isset($_POST['datHang']) && ($_POST['datHang'])){
+                $email = $_POST['email'];
+                $name = $_POST['name'];
+                $phone = $_POST['phone'];
+                $address = $_POST['address'];
+                $pttt = $_POST['pttt'];
+                if (empty($email)) {
+                    $errEmail = "Vui lòng nhập email";
+                }
+                if (empty($address)) {
+                    $errAddress = "Vui lòng nhập địa chỉ";
+                }
+                if (empty($name)) {
+                    $errName = "Vui lòng nhập tên";
+                }
+                if (empty($phone)) {
+                    $errPhone = "Vui lòng nhập SĐT";
+                }
+                if ($pttt == 0) {
+                    $errPttt = "Vui lòng chọn pttt";
+                }
+                if(!empty($email) && !empty($address) && !empty($name) && !empty($phone) && $pttt>0){
+                    $testcart = cart_test();
+                    $tt = 0;
+                    $order = array();
+                    if(empty($_SESSION['cart'])){
+                        echo '<script type="text/javascript"> window.onload = function () { alert("Giỏ hàng rỗng, vui lòng mua hàng"); }</script>';
+                    }else{
+                    foreach($testcart as $item){
+                        extract($item);
+                        $order[] = $item;
+                        $tt += $price * $_SESSION['cart'][$id];
+                    }
+                    $dburl = "mysql:host=localhost;dbname=wd18319_duan1_team4;charset=utf8";
+                    $username = 'root';
+                    $password = '';
+                    $conn = new PDO($dburl, $username, $password);
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql = "INSERT INTO cart(id_user, total, pttt) VALUES ('$userId','$tt', '$pttt') ";
+                    $conn->exec($sql);
+                    $id_cart = $conn->lastInsertId();
+                    $noisql = "";
+                    $num = 0;
+                    updtCart();
+                    foreach($order as $key=>$product){
+                        //var_dump($order);exit;
+                        $noisql .= "('$id_cart','" . $product['id'] . "','" . $product['price'] . "','" . $product['img'] . "','" . $product['name'] . "','" . $_SESSION['cart'][$product['id']] . "')";
+                        if($key != (count($order) - 1)){
+                            $noisql .= ",";
+                        }
+                    }
+                    $sql2 = "INSERT INTO cart_details(id_cart, id_pro, price, img, name, quantity) VALUES ".$noisql." ";
+                    pdo_execute($sql2);
+                    unset($_SESSION['cart']);
+                }}
+            }include "view/cfCart.php";
         break;
         case 'spct':
             include "view/spct.php";
             break;
         default:
             include "view/home.php";
-            break;
+        break;
     }
 } else {
     include "view/home.php";

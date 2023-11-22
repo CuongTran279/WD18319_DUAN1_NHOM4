@@ -4,51 +4,49 @@
             extract($one);
             ?>
         <div class=" row align-items-center login-form">
-            <div class="col pl-0 ">
-                <div class="row-6 img_to border text-center">
-                    <?php
-                        $hinh = $imgpath . $img;
-                        echo '<img src="'.$hinh.'" alt="" class="object-fit-contain " style="width:500px;height:500px">'
-                    ?>
+            <form action="index.php?act=addCart" class="row" method="post">
+                <div class="col pl-0 ">
+                    <div class="row-6 img_to border text-center">
+                        <?php
+                            $hinh = $imgpath . $img;
+                            echo '<img src="'.$hinh.'" alt="" class="object-fit-contain " style="width:500px;height:500px">'
+                        ?>
+                    </div>
                 </div>
-            </div>
-            <div class="col pr-4 pl-4 ctsp">
-                <div class="row">
-                    <p >Mã Sản phẩm</p>
-                </div>
-                <div class="row">
-                    <p>Tên sản phẩm : <?=$name?></p>
-                </div>
-                <div class="row">
-                    <p>GIá : <?=$price?></p>
-                </div>
-                <div class="row-4">
-                    <p>Mô tả : <?=$description?></p>
-                </div>
-                <div class="form-outline pb-2 sl ">
-                    <div class="title_sl pb-2">Số lượng</div>
-                    <div class="bt_sl row">
-                        <div class="col">
-                            <button class="btn btn-dark" id="minus">-</button>
-                        </div>
-                        <div class="col-6">
-                            <input type="number" id="typeNumber" class="form-control quantity" min="1" value="1">
-                        </div>
-                        <div class="col">
-                            <button class="btn btn-dark" id="plus">+</button>
+                <div class="col pr-4 pl-4 ctsp">
+                    <div class="row">
+                        <p >Mã Sản phẩm</p>
+                    </div>
+                    <div class="row">
+                        <p>Tên sản phẩm : <?=$name?></p>
+                    </div>
+                    <div class="row">
+                        <p>GIá : <?=$price?></p>
+                    </div>
+                    <div class="row-4">
+                        <p>Mô tả : <?=$description?></p>
+                    </div>
+                    <div class="form-outline pb-2 sl ">
+                        <div class="title_sl pb-2">Số lượng</div>
+                        <div class="bt_sl row">
+                            <div class="col">
+                                <button class="btn btn-dark" id="minus">-</button>
+                            </div>
+                            <div class="col-6">
+                                <input type="number" id="typeNumber" name="quantity[<?=$id?>]" class="form-control quantity" min="1" value="1">
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-dark" id="plus">+</button>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-                <form action="index.php?act=addCart" class="row-2 pt-2">
-                    <input type="hidden" name="id" value="$id">
-                    <input type="hidden" name="img" value="$hinh">
-                    <input type="hidden" name="name" value="<?=$name?>">
-                    <input type="hidden" name="price" value="$price">
-                    <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-dark">
-                </form>
-                
-            </div>
+                    <input type="hidden" name="id" value="<?=$id?>">
+                    <input type="hidden" value="<?=$name?>" name="name">
+                    <input type="hidden" value="<?=$hinh?>" name="img">
+                    <input type="hidden" value="<?=$price?>" name="price">
+                    <input type="submit" name="addCart" value="Thêm vào giỏ hàng" class="btn btn-dark">
+                </div>    
+            </form>
         </div>
         <div class="row layout_padding">
             <div class="container">
@@ -112,7 +110,7 @@
                   <input type="hidden" name="img" value="'.$hinh.'">
                   <input type="hidden" name="name" value="'.$name.'">
                   <input type="hidden" name="price" value="'.$price.'">
-                  <a href=""><div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div></a>
+                  <a href="index.php?act=addCart"><div class="new"><span><i class="fa-solid fa-cart-shopping" name="addCart"></i></span></div></a>
                 </form>
               </div>
             </div>';
