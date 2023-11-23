@@ -56,14 +56,19 @@
                 <a href="index.php?act=about">Về chúng tôi</a>
                 <a href="index.php?act=shop">Danh mục</a>
                 <a href="index.php?act=blog">Blog</a>
-                <?php if(!isset($_SESSION['user'])){?>
+                <?php 
+                  // $check = check_taikhoan($name, $password);
+                  // $_SESSION['user'] = $check;
+                if(!isset($_SESSION['user'])){?>
                 <a href="index.php?act=login">Đăng nhập</a>
+                <?php }?>
                 <?php
-                }else{
-                  extract($_SESSION['user']);?>
+                if(isset($_SESSION['user'])){
+                  $user = $_SESSION['user'];?>
                   <a href="index.php?act=cart">Giỏ hàng</a>
                   <a href="index.php?act=out">Đăng xuất tài khoản</a>
-                  <?php if (($role == 1)) {
+                  <?php if (isset($user['role'])) {
+                    if($user['role'] == 1)
                 ?>
                     <a href="admin/index.php">Truy cập Admin</a>
                   <?php } ?>

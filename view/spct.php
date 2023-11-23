@@ -30,13 +30,13 @@
                         <div class="title_sl pb-2">Số lượng</div>
                         <div class="bt_sl row">
                             <div class="col">
-                                <button class="btn btn-dark" id="minus">-</button>
+                                <button class="btn btn-dark" onclick="minus(this)" id="minus">-</button>
                             </div>
                             <div class="col-6">
                                 <input type="number" id="typeNumber" name="quantity[<?=$id?>]" class="form-control quantity" min="1" value="1">
                             </div>
                             <div class="col">
-                                <button class="btn btn-dark" id="plus">+</button>
+                                <button class="btn btn-dark" onclick="plus(this)" id="plus">+</button>
                             </div>
                         </div>
                     </div>

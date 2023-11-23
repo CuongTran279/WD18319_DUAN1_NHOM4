@@ -8,8 +8,10 @@ include "model/danhmuc.php";
 include "model/sanpham.php";
 include "model/cart.php";
 $spnew = select_all_home_products();
-$testuser = check_taikhoan_name();
-$userId = $testuser['id'];
+// if(!isset($_SESSION['user'])){
+//     $_SESSION['user'] = array();
+// }
+//var_dump($_SESSION['user']);exit;
 $dsdm = select_all_danhmuc();
     function updtCart($add = false){
             foreach($_POST['quantity'] as $id => $quantity){
@@ -222,9 +224,13 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     $password = '';
                     $conn = new PDO($dburl, $username, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $sql1 = "SELECT * FROM user WHERE name = '".$_SESSION['user']['name']."'";
+                    $tk = pdo_query_one($sql1);
+                    $userId = $tk['id'];
                     $sql = "INSERT INTO cart(id_user, total, pttt) VALUES ('$userId','$tt', '$pttt') ";
                     $conn->exec($sql);
                     $id_cart = $conn->lastInsertId();
+                    
                     $noisql = "";
                     $num = 0;
                     updtCart();
