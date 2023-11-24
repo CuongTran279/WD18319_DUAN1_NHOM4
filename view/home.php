@@ -62,7 +62,7 @@
                   <input type="hidden" name="img" value="'.$hinh.'">
                   <input type="hidden" name="name" value="'.$name.'">
                   <input type="hidden" name="price" value="'.$price.'">
-                  <a href=""><div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div></a>
+                  <div class="new"><a href="index.php?act=addCart"><span><i class="fa-solid fa-cart-shopping" name="addCart"></i></span></a></div>
                 </form>
               </div>
             </div>';

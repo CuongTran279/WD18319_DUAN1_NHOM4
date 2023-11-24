@@ -41,6 +41,9 @@
                     <li>
                         <a href="index.php?act=user"><i class="fa-solid fa-user ico-side"></i>Quản lí thành viên</a>
                     </li>
+                    <li>
+                        <a href="index.php?act=comment"><i class="fa-solid fa-comment ico-side "></i>Quản lí bình luận</a>
+                    </li>
                 </ul>
             </nav>
         </div>
