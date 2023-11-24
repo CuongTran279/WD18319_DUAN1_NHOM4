@@ -230,7 +230,6 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     $sql = "INSERT INTO cart(id_user, total, pttt) VALUES ('$userId','$tt', '$pttt') ";
                     $conn->exec($sql);
                     $id_cart = $conn->lastInsertId();
-                    
                     $noisql = "";
                     $num = 0;
                     updtCart();

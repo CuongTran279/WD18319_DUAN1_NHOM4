@@ -3,6 +3,7 @@
     include "../model/pdo.php";
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
+    include "../model/binhluan.php";
     if(isset($_GET["act"])&& $_GET["act"] != ""){
         $act = $_GET['act'];
         switch($act){
@@ -13,7 +14,20 @@
             case 'order':
                 include "qldonhang/order.php";
             break;
-
+//Bình luận
+            case 'comment':
+                $lisbl = binhluan_select_all(0);
+                include "qlbinhluan/comment.php";
+            break; 
+            case 'xoaBl':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $id = $_GET['id'];
+                    binhluan_delete($id);
+                }
+                $lisbl = binhluan_select_all(0);
+                include "qlbinhluan/comment.php";
+            break;
+//Bình luận
 // Danh mục
             case 'caterogies':
                 if(isset($_GET['id']) && ($_GET['id'] >0)) {

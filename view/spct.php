@@ -15,7 +15,7 @@
                 </div>
                 <div class="col pr-4 pl-4 ctsp">
                     <div class="row">
-                        <p >Mã Sản phẩm</p>
+                        <p>Mã Sản phẩm</p>
                     </div>
                     <div class="row">
                         <p>Tên sản phẩm : <?=$name?></p>
@@ -28,14 +28,14 @@
                     </div>
                     <div class="form-outline pb-2 sl ">
                         <div class="title_sl pb-2">Số lượng</div>
-                        <div class="bt_sl row">
+                        <div class="bt_sl row" >
                             <div class="col">
                                 <button class="btn btn-dark" onclick="minus(this)" id="minus">-</button>
                             </div>
-                            <div class="col-6">
+                            <div class="col" style="width:100px;margin-left:-50px">
                                 <input type="number" id="typeNumber" name="quantity[<?=$id?>]" class="form-control quantity" min="1" value="1">
                             </div>
-                            <div class="col">
+                            <div class="col" >
                                 <button class="btn btn-dark" onclick="plus(this)" id="plus">+</button>
                             </div>
                         </div>
@@ -49,37 +49,14 @@
             </form>
         </div>
         <div class="row layout_padding">
-            <div class="container">
-                <div class="heading_container">
-                    <h2>
-                        Bình luận
-                    </h2>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col">Người bình luận</th>
-                            <th scope="col">Nội dung</th>
-                            <th scope="col">Ngày bình luận</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <form action="">
-                    <div class="mb-3">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary ">Gửi bình luận</button>
-                </form>
-
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script>
+                $(document).ready(function(){
+                    $("#binhluan").load("view/comment.php", {id_pro: <?=$id?>});
+                });
+            </script>
+            <div class="container" id="binhluan">
+                
             </div>
         </div>
         <div class="shop_section row layout_padding">
