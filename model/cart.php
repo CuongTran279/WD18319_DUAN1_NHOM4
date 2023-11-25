@@ -8,9 +8,9 @@ function cart_test(){
     $testcart = pdo_query($sql);
     return $testcart;}
 }
-function insert_cart($userId, $tt, $pttt)
+function insert_cart($userId, $tt, $pttt,$ten,$phone,$address,$email)
 {
-    $sql = "INSERT INTO cart(id_user, total, pttt) VALUES ('$userId','$tt', '$pttt') ";
+    $sql = "INSERT INTO cart(id_user, total, pttt,name,tel,address,email) VALUES ('$userId','$tt', '$pttt','$ten','$phone','$address','$email') ";
     pdo_execute($sql);
 }
 function inser_cart_detail()

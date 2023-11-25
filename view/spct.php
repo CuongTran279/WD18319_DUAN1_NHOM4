@@ -9,7 +9,7 @@
                     <div class="row-6 img_to border text-center">
                         <?php
                             $hinh = $imgpath . $img;
-                            echo '<img src="'.$hinh.'" alt="" class="object-fit-contain " style="width:500px;height:500px">'
+                            echo '<img src="'.$hinh.'" alt="" class="object-fit-contain " style="width:400px;height:500px;">'
                         ?>
                     </div>
                 </div>

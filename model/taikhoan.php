@@ -9,7 +9,6 @@
         $tk = pdo_query_one($sql);
         return $tk;
     }
-    
     function check_taikhoan_name(){
             if(isset($_SESSION['user'])){
                 $sql = "SELECT * FROM user WHERE name = '".$_SESSION['user']['name']."'";
