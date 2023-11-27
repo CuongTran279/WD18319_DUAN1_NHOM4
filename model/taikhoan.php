@@ -17,5 +17,23 @@
             }else{
                 $_SESSION['user'] = array();
             }
-        }
+    }
+    function select_all_user(){
+        $sql = "SELECT * FROM user order by id desc ";
+        $listk = pdo_query($sql);
+        return $listk;
+    }
+    function delete_user($id){
+        $sql = "DELETE FROM user WHERE id=".$id;
+        pdo_execute($sql);
+    }
+    function select_id_user($id){
+        $sql = "SELECT * FROM user where id=".$id;
+        $tk = pdo_query_one($sql);
+        return $tk;
+    }
+    function update_user($role,$id){
+        $sql = "UPDATE user SET role = '$role' WHERE id =".$id;
+        pdo_execute($sql);
+    }
 ?>

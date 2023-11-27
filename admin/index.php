@@ -4,6 +4,8 @@
     include "../model/danhmuc.php";
     include "../model/sanpham.php";
     include "../model/binhluan.php";
+    include "../model/taikhoan.php";
+    include "../model/cart.php";
     if(isset($_GET["act"])&& $_GET["act"] != ""){
         $act = $_GET['act'];
         switch($act){
@@ -11,9 +13,31 @@
                 include "dashboards/dashboards.php";
             break;
 
+//Đơn hàng
             case 'order':
+                
+                $lisCart = select_all_cart();
                 include "qldonhang/order.php";
             break;
+            case 'suaDh':
+                if(isset($_GET['id']) && ($_GET['id']>0)){
+                    $id = $_GET['id'];
+                    $cart = select_id_cart($id);
+                }
+                $lisCart = select_all_cart();
+                include "qldonhang/ctorder.php";
+            break;
+            case 'updtDh':
+                if(isset($_POST['updtDh']) && ($_POST['updtDh'])){
+                    $id = $_POST['id'];
+                    $trangthai = $_POST['trangthai'];
+                    update_trangthai($trangthai,$id);
+                }
+                $lisCart = select_all_cart();
+                include "qldonhang/order.php";
+            break;
+//Đơn hàng
+
 //Bình luận
             case 'comment':
                 $lisbl = binhluan_select_all(0);
@@ -28,6 +52,7 @@
                 include "qlbinhluan/comment.php";
             break;
 //Bình luận
+
 // Danh mục
             case 'caterogies':
                 if(isset($_GET['id']) && ($_GET['id'] >0)) {
@@ -140,10 +165,37 @@
                 include "qlsanpham/Products.php";
             break;
 // Sản phẩm
+
+//user
             case 'user':
+                $listk = select_all_user();
                 include "qlthanhvien/user.php";
             break;
-
+            case 'xoatk':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $id = $_GET['id'];
+                    delete_user($id);
+                }
+                $listk = select_all_user();
+                include "qlthanhvien/user.php";
+            break;
+            case 'suatk':
+                if(isset($_GET['id']) && ($_GET['id'] >0)) {
+                    $tk = select_id_user($_GET['id']);
+                }
+                $listk = select_all_user();
+                include "qlthanhvien/updtuser.php";
+            break;
+            case 'updtTk':
+                if(isset($_POST['updtTk']) && ($_POST['updtTk'])){
+                    $id = $_POST['id'];
+                    $role = $_POST['role'];
+                    update_user($role,$id);
+                    $thongbao = "Cập nhật thanh cong";
+                }
+                $listk = select_all_user();
+                include "qlthanhvien/user.php";
+            break;
             default:
                 include "boxcontent.php";
             break;

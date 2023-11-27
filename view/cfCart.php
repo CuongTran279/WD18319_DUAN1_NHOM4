@@ -76,7 +76,7 @@
                                         </a><td class="text-danger ">'.$price.'</td>
                                         <td><input type="number" name="quantity['.$id.']" id="" value="'.$_SESSION['cart'][$id].'" style="font-size: 20px;"></td>
                                         <td class="text-danger ">'.$price * $_SESSION['cart'][$id].'</td>
-                          </tr>';
+                                        </tr>';
                                         $i++;
                                         $tt += $price * $_SESSION['cart'][$id];
                                 } ?>
