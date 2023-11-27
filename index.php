@@ -152,6 +152,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 $testcart = cart_test();
                 if(isset($_POST['updtQuantt'])){
                 updtCart();
+                echo '<script type="text/javascript"> window.onload = function () { alert("Cập nhật giỏ hàng thành công"); }</script>';
             }
             }
             include "view/cart.php";
@@ -188,7 +189,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             }
             if(isset($_POST['datHang']) && ($_POST['datHang'])){
                 $email = $_POST['email'];
-                $name = $_POST['name'];
+                $ten = $_POST['name'];
                 $phone = $_POST['phone'];
                 $address = $_POST['address'];
                 $pttt = $_POST['pttt'];
@@ -198,7 +199,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 if (empty($address)) {
                     $errAddress = "Vui lòng nhập địa chỉ";
                 }
-                if (empty($name)) {
+                if (empty($ten)) {
                     $errName = "Vui lòng nhập tên";
                 }
                 if (empty($phone)) {
@@ -207,7 +208,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 if ($pttt == 0) {
                     $errPttt = "Vui lòng chọn pttt";
                 }
-                if(!empty($email) && !empty($address) && !empty($name) && !empty($phone) && $pttt>0){
+                if(!empty($email) && !empty($address) && !empty($ten) && !empty($phone) && $pttt>0){
                     $testcart = cart_test();
                     $tt = 0;
                     $order = array();
@@ -224,10 +225,14 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     $password = '';
                     $conn = new PDO($dburl, $username, $password);
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    $sql1 = "SELECT * FROM user WHERE name = '".$_SESSION['user']['name']."'";
-                    $tk = pdo_query_one($sql1);
-                    $userId = $tk['id'];
-                    $sql = "INSERT INTO cart(id_user, total, pttt) VALUES ('$userId','$tt', '$pttt') ";
+                    if(isset($_SESSION['user'])){
+                        $sql1 = "SELECT * FROM user WHERE name = '".$_SESSION['user']['name']."'";
+                        $tk = pdo_query_one($sql1);
+                        $userId = $tk['id'];
+                    }else{
+                        $userId = 0;
+                    }
+                    $sql = "INSERT INTO cart(id_user, total, pttt,name,tel,address,email) VALUES ('$userId','$tt', '$pttt','$ten','$phone','$address','$email') ";
                     $conn->exec($sql);
                     $id_cart = $conn->lastInsertId();
                     $noisql = "";
