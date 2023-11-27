@@ -40,6 +40,9 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         case 'shop':
             include "view/shop.php";
             break;
+            case 'profile':
+                include "view/profile.php";
+                break;
         case 'sanpham':
             if(isset($_POST['kyw']) && ($_POST['kyw']!="")){
                 $kyw=$_POST['kyw'];
