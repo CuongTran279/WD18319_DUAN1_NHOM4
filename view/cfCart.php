@@ -64,7 +64,7 @@
                                 $i = 1;
                                 $tt =0;
                                 if(empty($_SESSION['cart'])){
-                                    echo '<script type="text/javascript"> window.onload = function () { alert("Mua thành công"); }</script>';
+                                    echo '<script type="text/javascript"> window.onload = function () { alert("Giỏ hàng rỗng, vui lòng mua hàng"); }</script>';
                                 }else{
                                     foreach ($testcart as $item) {
                                         extract($item);

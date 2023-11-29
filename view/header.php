@@ -66,12 +66,13 @@
                 if(isset($_SESSION['user'])){
                   $user = $_SESSION['user'];?>
                   <a href="index.php?act=cart">Giỏ hàng</a>
-                  <a href="index.php?act=out">Đăng xuất tài khoản</a>
-                  <?php if (isset($user['role'])) {
-                    if($user['role'] == 1)
-                ?>
-                    <a href="admin/index.php">Truy cập Admin</a>
-                  <?php } ?>
+                  <a href="index.php?act=profile">Hồ sơ</a>
+                  <?php
+                  //  if (isset($user['role'])) {
+                  //   if($user['role'] == 1)
+                  ?>
+                    <!-- <a href="admin/index.php">Truy cập Admin</a> -->
+                  <?php //} ?>
                   <input type="text" name="" id="" class="kyw">
                 <?php } ?>
               </div>

@@ -34,4 +34,18 @@
         $sql = "UPDATE cart SET trangthai='".$trangthai."' WHERE id =".$id;
         pdo_execute($sql);
     }
+    // function select_iduser_cart($id){
+    //     $sql = "SELECT cart.id,cart.pttt,cart.trangthai,cart.email,cart.name,cart.tel,cart.address,cart.total,cart_details.name as product_name,cart_details.price,cart_details.img,cart_details.quantity FROM cart INNER JOIN cart_details ON cart.id = cart_details.id_cart WHERE cart.id_user =".$id;
+    //     $cart = pdo_query($sql);
+    //     return $cart;
+    // }
+    function select_iduser_each_cart($id){
+        $sql = "SELECT cart.id,cart.pttt,cart.trangthai,cart.email,cart.name,cart.tel,cart.address,cart.total,cart_details.name as product_name,cart_details.price,cart_details.img,cart_details.quantity FROM cart INNER JOIN cart_details ON cart.id = cart_details.id_cart WHERE cart.id_user = $id group by cart.id";
+        $cart = pdo_query($sql);
+        return $cart;
+    }
+    function delete_cart($id){
+        $sql = "DELETE FROM cart WHERE id=".$id;
+        pdo_execute($sql);
+    }
 ?>
