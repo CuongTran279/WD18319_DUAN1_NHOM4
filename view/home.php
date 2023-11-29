@@ -32,7 +32,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Latest Products
+        Sản phẩm mới nhất
         </h2>
       </div>
       <div class="row">
@@ -68,189 +68,6 @@
             </div>';
           }
         ?>
-        
-        <!-- <form action="" method="post">
-          <input type="hidden" name="" value="'.$id.'">
-          <input type="hidden" name="" value="'.$hinh.'">
-          <input type="hidden" name="" value="'.$name.'">
-          <input type="hidden" name="" value="'.$price.'">
-          <input type="submit" value="<div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div>">
-        </form> -->
-        <!-- <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p2.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Necklace
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $300
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div> -->
-        <!-- <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Necklace
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $110
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p4.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $45
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p5.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Ring
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $95
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p6.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Earrings
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $70
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p7.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Earrings
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $400
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="view/images/p8.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Necklace
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    $450
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  New
-                </span>
-              </div>
-            </a>
-          </div>
-        </div> -->
       </div>
       <div class="btn-box">
         <a href="">
@@ -347,7 +164,7 @@
     <div class="container">
       <div class="heading_container">
         <h2>
-          Latest From Blog
+          Sản phẩm mới nhất
         </h2>
       </div>
       <div class="row">

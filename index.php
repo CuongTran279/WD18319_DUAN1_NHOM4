@@ -28,6 +28,9 @@ $dsdm = select_all_danhmuc();
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = array();
 }
+// if(isset($_SESSION['user'])){
+//     $id_user = $_SESSION['user'];
+// }
 if (isset($_GET["act"]) && $_GET["act"] != "") {
     $act = $_GET['act'];
     switch ($act) {
@@ -40,9 +43,50 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         case 'shop':
             include "view/shop.php";
             break;
-            case 'profile':
-                include "view/profile.php";
-                break;
+//profile
+        case 'profile':
+            if(isset($_SESSION['user'])){
+                $id = $_SESSION['user']['id'];
+                
+                //$profile = select_iduser_cart($id);
+            }$eachcart = select_iduser_each_cart($id);
+            include "view/profile.php";
+        break;
+//đơn hàng
+        case 'updtTk':
+            if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                $name = $_POST['name'];
+                $id =$_POST['id'];
+                $email = $_POST['email'];
+                $img = $_FILES['image']['name'];
+                $target_dir = "../upload/";
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                } else {
+                }
+                $phone =$_POST['phone'];
+                $address = $_POST['address'];
+                updtTk($name,$phone,$address,$img,$email,$id);
+                header("Location:index.php?act=profile");
+            }
+            include "view/updtTk.php";
+        break;
+        case 'ctdh':
+            if(isset($_GET['id']) && ($_GET['id'])){
+                $id = $_GET['id'];
+                $cart = select_id_cart($id);
+            }
+            include "view/ctdh.php";
+        break;
+        case 'xoadh':
+            if(isset($_GET['id']) && ($_GET['id']>0)){
+                $id = $_GET['id'];
+                delete_cart($id);
+            }
+            $eachcart = select_iduser_each_cart($id);
+            include "view/profile.php";
+        break;
+//Sản phẩm
         case 'sanpham':
             if(isset($_POST['kyw']) && ($_POST['kyw']!="")){
                 $kyw=$_POST['kyw'];
@@ -162,13 +206,18 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         break;
         case 'addCart':
             if(isset($_POST['addCart']) && ($_POST['addCart'])){
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $price = $_POST['price'];
-                $quantity = $_POST['quantity'];
-                $img = $_POST['img'];
-                updtCart(true);
-                header("Location:index.php?act=cart");
+                if(isset($_SESSION['user'])){
+                    $id = $_POST['id'];
+                    $name = $_POST['name'];
+                    $price = $_POST['price'];
+                    $quantity = $_POST['quantity'];
+                    $img = $_POST['img'];
+                    updtCart(true);
+                    header("Location:index.php?act=cart");
+                }else{
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Để mua hàng, vui lòng đăng nhập"); }</script>';
+                }
+                
             }
             if(!empty($_SESSION['cart'])){
                 $testcart = cart_test();
@@ -218,41 +267,48 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     if(empty($_SESSION['cart'])){
                         echo '<script type="text/javascript"> window.onload = function () { alert("Giỏ hàng rỗng, vui lòng mua hàng"); }</script>';
                     }else{
-                    foreach($testcart as $item){
-                        extract($item);
-                        $order[] = $item;
-                        $tt += $price * $_SESSION['cart'][$id];
-                    }
-                    $dburl = "mysql:host=localhost;dbname=wd18319_duan1_team4;charset=utf8";
-                    $username = 'root';
-                    $password = '';
-                    $conn = new PDO($dburl, $username, $password);
-                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    if(isset($_SESSION['user'])){
-                        $sql1 = "SELECT * FROM user WHERE name = '".$_SESSION['user']['name']."'";
-                        $tk = pdo_query_one($sql1);
-                        $userId = $tk['id'];
-                    }else{
-                        $userId = 0;
-                    }
-                    $sql = "INSERT INTO cart(id_user, total, pttt,name,tel,address,email) VALUES ('$userId','$tt', '$pttt','$ten','$phone','$address','$email') ";
-                    $conn->exec($sql);
-                    $id_cart = $conn->lastInsertId();
-                    $noisql = "";
-                    $num = 0;
-                    updtCart();
-                    foreach($order as $key=>$product){
-                        //var_dump($order);exit;
-                        $noisql .= "('$id_cart','" . $product['id'] . "','" . $product['price'] . "','" . $product['img'] . "','" . $product['name'] . "','" . $_SESSION['cart'][$product['id']] . "')";
-                        if($key != (count($order) - 1)){
-                            $noisql .= ",";
+                        foreach($testcart as $item){
+                            extract($item);
+                            $order[] = $item;
+                            $tt += $price * $_SESSION['cart'][$id];
                         }
+                        $dburl = "mysql:host=localhost;dbname=wd18319_duan1_team4;charset=utf8";
+                        $username = 'root';
+                        $password = '';
+                        $conn = new PDO($dburl, $username, $password);
+                        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        if(isset($_SESSION['user'])){
+                            $sql1 = "SELECT * FROM user WHERE name = '".$_SESSION['user']['name']."'";
+                            $tk = pdo_query_one($sql1);
+                            $userId = $tk['id'];
+                        }else{
+                            $userId = 0;
+                        }
+                        $sql = "INSERT INTO cart(id_user, total, pttt,name,tel,address,email) VALUES ('$userId','$tt', '$pttt','$ten','$phone','$address','$email') ";
+                        $conn->exec($sql);
+                        $id_cart = $conn->lastInsertId();
+                        $noisql = "";
+                        $num = 0;
+                        updtCart();
+                        foreach($order as $key=>$product){
+                            //var_dump($order);exit;
+                            $noisql .= "('$id_cart','" . $product['id'] . "','" . $product['price'] . "','" . $product['img'] . "','" . $product['name'] . "','" . $_SESSION['cart'][$product['id']] . "')";
+                            if($key != (count($order) - 1)){
+                                $noisql .= ",";
+                            }
+                        }
+                        $sql2 = "INSERT INTO cart_details(id_cart, id_pro, price, img, name, quantity) VALUES ".$noisql." ";
+                        pdo_execute($sql2);
+                        unset($_SESSION['cart']);
+                        header("Location:index.php?act=mhtc");
+                        
                     }
-                    $sql2 = "INSERT INTO cart_details(id_cart, id_pro, price, img, name, quantity) VALUES ".$noisql." ";
-                    pdo_execute($sql2);
-                    unset($_SESSION['cart']);
-                }}
-            }include "view/cfCart.php";
+                }
+            }
+            include "view/cfCart.php";
+        break;
+        case 'mhtc':
+            include "view/mhtc.php";
         break;
         case 'spct':
             include "view/spct.php";
