@@ -7,13 +7,14 @@
         <div class="position-fixed  text-center ml-2">
           <div class="card" style="width: 18rem;">
             <div class="card-header">
-                <a href="index.php?act=shop" class="text-dark link-offset-2 link-underline link-underline-opacity-0">Danh mục sản phẩm</a>
+              <a href="index.php?act=xemthem" class="text-dark link-offset-2 link-underline link-underline-opacity-0">Danh mục sản phẩm</a>
             </div>
             <ul class="list-group list-group-flush">
               <?php
                   foreach($dsdm as $dm){
-                      $linkdm = "index.php?act=sanpham&id_categories=".$dm['id'];
-                      echo '<li class="list-group-item"><a class="text-dark" href="'.$linkdm.'">'.$dm['name'].'</a></li>';}
+                      extract($dm);
+                      $linkdm = "index.php?act=sanpham&id_categories=".$id;
+                      echo '<li class="list-group-item"><a class="text-dark" href="'.$linkdm.'">'.$name.'</a></li>';}
               ?>
             </ul>
             <form class="d-flex justify-content-between mb-2">
@@ -32,13 +33,13 @@
       <div class="col-8 ">
         <div class="heading_container heading_center">
           <h2>
-            Sản phẩm - <strong><?=$dm['name']?></strong>
+            Sản phẩm
           </h2>
         </div>
         <div class="row">
           <?php
           $i = 0;
-          foreach ($dssp as $sp) {
+          foreach ($sqall as $sp) {
             extract($sp);
             $hinh = $imgpath . $img;
             // if (($i == 2) || ($i == 5) || ($i == 8)) {
@@ -56,12 +57,25 @@
                     <h6>'.$name.'</h6>
                     <h6>Price<span>$'.$price.'</span></h6>
                   </div>
-                  <div class="new"><span>New</span></div>
                 </a>
+                <form action="index.php?act=addCart" method="post">
+                  <input type="hidden" name="id" value="'.$id.'">
+                  <input type="hidden" name="img" value="'.$hinh.'">
+                  <input type="hidden" name="name" value="'.$name.'">
+                  <input type="hidden" name="price" value="'.$price.'">
+                  <div class="new"><span><i class="fa-solid fa-cart-shopping"></i></span></div>
+                </form>
               </div>
             </div>';
           }
           ?>
+          
+        </div>
+        <div class="btn-box">
+          
+            <a href="index.php?act=shop" name="xemthem">
+            Rút gọn
+          </a>
           
         </div>
       </div>

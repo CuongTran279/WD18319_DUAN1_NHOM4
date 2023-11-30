@@ -8,6 +8,7 @@ include "model/danhmuc.php";
 include "model/sanpham.php";
 include "model/cart.php";
 $spnew = select_all_home_products();
+$sqall = select_all_xemthem_home_product();
 // if(!isset($_SESSION['user'])){
 //     $_SESSION['user'] = array();
 // }
@@ -42,7 +43,22 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             break;
         case 'shop':
             include "view/shop.php";
-            break;
+        break;
+        case 'xemthem':
+            if(isset($_POST['kyw']) && ($_POST['kyw']!="")){
+                $kyw=$_POST['kyw'];
+            }else{
+                $kyw = "";
+            }
+            if(isset($_GET['id_categories']) && ($_GET['id_categories']>0)){
+                $id_categories = $_GET['id_categories'];
+            }else{
+                $id_categories = 0;
+            }
+            $tendm =sanpham_tendm_select_by_id($id_categories);
+            $sqall = select_all_xemthem_home_product();
+            include "view/spall.php";
+        break;
 //profile
         case 'profile':
             if(isset($_SESSION['user'])){
@@ -257,7 +273,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 if (empty($phone)) {
                     $errPhone = "Vui lòng nhập SĐT";
                 }
-                if ($pttt == 0) {
+                if ($pttt < 1) {
                     $errPttt = "Vui lòng chọn pttt";
                 }
                 if(!empty($email) && !empty($address) && !empty($ten) && !empty($phone) && $pttt>0){

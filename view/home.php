@@ -69,11 +69,6 @@
           }
         ?>
       </div>
-      <div class="btn-box">
-        <a href="">
-          View All Products
-        </a>
-      </div>
     </div>
   </section>
 

@@ -43,7 +43,7 @@
                 <?php if (isset($user['role'])) {
                     if($user['role'] == 1){
                   ?>
-                <a href=""><input type="button" value="Truy cập admin" class="btn btn-dark"></a>
+                <a href="admin/index.php"><input type="button" value="Truy cập admin" class="btn btn-dark"></a>
                 <?php }}?>
             </div>
             <div class="col-7 ml-5 border black" style="padding: 20px;">
@@ -60,11 +60,13 @@
                         
                         if($trangthai == 1){
                           $tt = "Đã xác nhận đơn hàng";
-                        }elseif($trangthai == 2){
+                        }elseif($trangthai == 3){
                           $tt = "Đã giao xong";
                         }elseif($trangthai == 0){
                           $tt = "Chờ xác nhận";
-                        }
+                        }elseif($trangthai == 2){
+                            $tt = "Đang giao hàng";
+                          }
                         if($pttt == 1){
                           $Pt = "Thanh toán khi nhận hàng";
                         }elseif($pttt == 2){
@@ -97,8 +99,8 @@
                     <a href="index.php?act=ctdh&id=<?=$id?>"><button class="btn btn-dark">Chi tiết đơn hàng</button></a>
                     <?php if($trangthai == 0){?>
                     <a href="<?=$xoa?>"><button class="btn btn-danger">Xóa đơn hàng</button></a>
-                    <?php }elseif($trangthai == 2){?>
-                    <a href="<?=$xacnhan?>"><button class="btn btn-danger">Xác nhận đơn hàng</button></a><?php }?>
+                    <?php }elseif($trangthai == 3){?>
+                    <a href="<?=$xacnhan?>"><button class="btn btn-primary">Tôi đã nhận được hàng</button></a><?php }?>
                 </div>
                 <?php }?>
             </div>

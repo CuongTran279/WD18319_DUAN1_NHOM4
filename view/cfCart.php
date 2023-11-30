@@ -30,7 +30,7 @@
                         <p class="text-danger"><?php echo $errPhone ?></p>
                     </div>
                     <select class="form-select" name="pttt" aria-label="Default select example">
-                        <option value="0" selected>Phương thức thanh toán</option>
+                        <option selected>Phương thức thanh toán</option>
                         <option value="1">Thanh toán khi nhận hàng</option>
                         <option value="2">Chuyển khoản</option>
                         <option value="3">Ghi nợ.</option>
@@ -74,7 +74,7 @@
                                           <td><img src="'.$hinh.'" alt="" style="width: 60px;height: 70px;"></td>
                                           <td class="text-uppercase">'.$name.'</td>
                                         </a><td class="text-danger ">'.$price.'</td>
-                                        <td><input type="number" name="quantity['.$id.']" id="" value="'.$_SESSION['cart'][$id].'" style="font-size: 20px;"></td>
+                                        <td><input type="number" readonly name="quantity['.$id.']" id="" value="'.$_SESSION['cart'][$id].'" style="font-size: 20px;"></td>
                                         <td class="text-danger ">'.$price * $_SESSION['cart'][$id].'</td>
                                         </tr>';
                                         $i++;

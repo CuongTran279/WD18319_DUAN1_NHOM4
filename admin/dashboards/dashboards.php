@@ -45,23 +45,28 @@
             </nav> -->
             <div class="main-content">
                 <h3 class="title-page">
-                    Dashboards
+                    Thống kê
                 </h3>
                 <section class="statistics row">
                     <div class="col-sm-12 col-md-6 col-xl-3">
-                        <a href="products.html">
+                        <a href="index.php?act=products">
                             <div class="card mb-3 widget-chart">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
                                     <h5>
                                         Tổng sản phẩm
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <?php
+                                    if(is_array($slsp)){
+                                        extract($slsp);
+                                    }
+                                ?>
+                                <span class="widget-numbers"><?=$sp?></span>
                             </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
-                        <a href="user.html">
+                        <a href="index.php?act=user">
                             <div class="card mb-3 widget-chart">
 
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
@@ -69,31 +74,46 @@
                                         Tổng thành viên
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <?php
+                                    if(is_array($sltk)){
+                                        extract($sltk);
+                                    }
+                                ?>
+                                <span class="widget-numbers"><?=$tk?></span>
                             </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
-                        <a href="caterogies.html">
+                        <a href="index.php?act=caterogies">
                             <div class="card mb-3 widget-chart">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
                                     <h5>
                                         Tổng doanh mục
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <?php
+                                    if(is_array($sldm)){
+                                        extract($sldm);
+                                    }
+                                ?>
+                                <span class="widget-numbers"><?=$dm?></span>
                             </div>
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
-                        <a href="#">
+                        <a href="index.php?act=order">
                             <div class="card mb-3 widget-chart">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
                                     <h5>
-                                        Tổng doanh mục
+                                        Tổng đơn hàng
                                     </h5>
                                 </div>
-                                <span class="widget-numbers">3M</span>
+                                <?php
+                                    if(is_array($sldh)){
+                                        extract($sldh);
+                                    }
+                                ?>
+                                <span class="widget-numbers"><?=$dh?></span>
                             </div>
                         </a>
                     </div>
