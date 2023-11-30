@@ -15,7 +15,6 @@
                 <form action="index.php?act=updtTk" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                     <label for="">Ảnh đại diện</label><br>
-                    <img src="upload/dd.jpg" alt="" style="width: 50px;height: 50px;">
                     <input type="file"  id="" name="image">
                     </div>
                     <input type="hidden" name="id" value="<?=$_SESSION['user']['id']?>">

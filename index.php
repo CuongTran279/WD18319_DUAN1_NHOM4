@@ -47,9 +47,9 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         case 'profile':
             if(isset($_SESSION['user'])){
                 $id = $_SESSION['user']['id'];
-                
                 //$profile = select_iduser_cart($id);
-            }$eachcart = select_iduser_each_cart($id);
+            }
+            $eachcart = select_iduser_each_cart($id);
             include "view/profile.php";
         break;
 //đơn hàng
@@ -59,7 +59,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 $id =$_POST['id'];
                 $email = $_POST['email'];
                 $img = $_FILES['image']['name'];
-                $target_dir = "../upload/";
+                $target_dir = "upload/";
                 $target_file = $target_dir . basename($_FILES["image"]["name"]);
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 } else {
@@ -72,7 +72,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             include "view/updtTk.php";
         break;
         case 'ctdh':
-            if(isset($_GET['id']) && ($_GET['id'])){
+            if(isset($_GET['id']) && ($_GET['id']>0)){
                 $id = $_GET['id'];
                 $cart = select_id_cart($id);
             }
@@ -83,7 +83,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 $id = $_GET['id'];
                 delete_cart($id);
             }
-            $eachcart = select_iduser_each_cart($id);
+            $eachcart = select_iduser_each_cart($_SESSION['user']['id']);
             include "view/profile.php";
         break;
 //Sản phẩm
@@ -301,7 +301,6 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                         pdo_execute($sql2);
                         unset($_SESSION['cart']);
                         header("Location:index.php?act=mhtc");
-                        
                     }
                 }
             }

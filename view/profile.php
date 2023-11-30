@@ -11,16 +11,15 @@
                     $user = SELECT_USERID();
                     if(is_array($user)){
                         extract($user);
-                        
-                    }$imgpath = "upload/" . $img;
+                    }$imgpath = "upload/". $img;
                     //var_dump($user);exit;
                 ?>
                 <div class="form-group">
                     <label for="">Ảnh đại diện</label><br>
                     <?php if($img == ""){?>
-                        <img src="upload/dd.jpg" alt="" style="width: 50px;height: 50px;">
+                        <img src="upload/dd.jpg" alt="" name="image" style="width: 50px;height: 50px;">
                     <?php }else{ ?>
-                        <img src="<?=$imgpath?>" alt="" style="width: 50px;height: 50px;">
+                        <img src="<?=$imgpath?>" alt="" name="image" style="width: 50px;height: 50px;">
                     <?php }?> 
                 </div>
                 <div class="form-group">
