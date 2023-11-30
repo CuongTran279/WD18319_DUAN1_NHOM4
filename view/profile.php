@@ -97,7 +97,8 @@
                     <a href="index.php?act=ctdh&id=<?=$id?>"><button class="btn btn-dark">Chi tiết đơn hàng</button></a>
                     <?php if($trangthai == 0){?>
                     <a href="<?=$xoa?>"><button class="btn btn-danger">Xóa đơn hàng</button></a>
-                    <?php }?>
+                    <?php }elseif($trangthai == 2){?>
+                    <a href="<?=$xacnhan?>"><button class="btn btn-danger">Xác nhận đơn hàng</button></a><?php }?>
                 </div>
                 <?php }?>
             </div>
