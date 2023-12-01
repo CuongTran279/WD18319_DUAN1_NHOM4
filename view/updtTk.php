@@ -39,7 +39,7 @@
                         <input type="text" class="form-control" name="phone" value="<?=$phone?>">
                     </div>
                     <input type="submit" value="Cập nhật" name="capnhat" class="btn btn-primary">
-                    <a href=""><input type="button" value="Đổi mật khẩu" class="btn btn-dark"></a>
+                    <a href="index.php?act=suamk"><input type="button" value="Đổi mật khẩu" class="btn btn-dark"></a>
                 </form>
     </div>
                 

@@ -15,13 +15,16 @@
     if(isset($_GET["act"])&& $_GET["act"] != ""){
         $act = $_GET['act'];
         switch($act){
+//Thống kê
+            case 'dashboards':
+                include "dashboards/dashboards.php";
+            break;
             case 'dashboards':
                 include "dashboards/dashboards.php";
             break;
 
 //Đơn hàng
             case 'order':
-                
                 $lisCart = select_all_cart();
                 include "qldonhang/order.php";
             break;

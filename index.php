@@ -87,6 +87,21 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             }
             include "view/updtTk.php";
         break;
+        case 'suamk':
+            $err = "";
+            if(isset($_POST['capnhat']) && ($_POST['capnhat'])){
+                $id = $_SESSION['user']['id'];
+                $pass = $_POST['pass'];
+                $repass = $_POST['repass'];
+                if($pass !== $repass){
+                    $err = "Mật khẩu phải giống nhau";
+                }else{
+                    update_pass($pass,$id);
+                    $err = "Thành công";
+                }
+            }
+            include "view/suamk.php";
+        break;
         case 'ctdh':
             if(isset($_GET['id']) && ($_GET['id']>0)){
                 $id = $_GET['id'];
