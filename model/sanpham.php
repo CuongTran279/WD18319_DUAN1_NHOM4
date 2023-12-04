@@ -38,6 +38,11 @@
         $lissp = pdo_query($sql);
         return $lissp;
     }
+    function select_all_xemthem_home_product(){
+        $sql = "SELECT * FROM products ";
+        $lissp = pdo_query($sql);
+        return $lissp;
+    }
     // Sản phẩm trong 1 danh mục
     function sanpham_tendm_select_by_id($id_categories){
         if($id_categories>0){

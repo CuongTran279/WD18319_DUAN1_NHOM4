@@ -6,16 +6,27 @@
     include "../model/binhluan.php";
     include "../model/taikhoan.php";
     include "../model/cart.php";
+    include "../model/thongke.php";
+    
+    $slsp = count_sp();
+    $sltk = count_tk();
+    $sldm = count_dm();
+    $sldh = count_dh();
+    $sp_dm = count_sp_dm();
+    $tk2 = slsp();
     if(isset($_GET["act"])&& $_GET["act"] != ""){
         $act = $_GET['act'];
         switch($act){
+//Thống kê
+            case 'dashboards':
+                include "dashboards/dashboards.php";
+            break;
             case 'dashboards':
                 include "dashboards/dashboards.php";
             break;
 
 //Đơn hàng
             case 'order':
-                
                 $lisCart = select_all_cart();
                 include "qldonhang/order.php";
             break;
@@ -160,6 +171,7 @@
                     }
                     update_products($name,$id_categories,$price,$description,$img,$id);
                     $thongbao = "Cập nhật thanh cong";
+                    header("Location:index.php?act=products");
                 }
                 $lissp = select_all_products();
                 include "qlsanpham/Products.php";
@@ -197,10 +209,10 @@
                 include "qlthanhvien/user.php";
             break;
             default:
-                include "boxcontent.php";
+                include "dashboards/dashboards.php";
             break;
         } 
     }else{
-        include "boxcontent.php";
+        include "dashboards/dashboards.php";
     }  
 ?>

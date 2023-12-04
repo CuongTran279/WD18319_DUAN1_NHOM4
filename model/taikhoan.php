@@ -41,6 +41,10 @@
         $sql = "UPDATE user SET role = '$role' WHERE id =".$id;
         pdo_execute($sql);
     }
+    function update_pass($pass,$id){
+        $sql = "UPDATE user SET pass = '$pass' WHERE id =".$id;
+        pdo_execute($sql);
+    }
     function updtTk($name,$phone,$address,$img,$email,$id){
             $sql = "UPDATE user SET name = '$name', phone = '$phone' , address = '$address ', img = '$img', email = '$email' WHERE id =".$id;
         pdo_execute($sql);

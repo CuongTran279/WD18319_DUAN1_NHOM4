@@ -64,11 +64,6 @@
           ?>
           
         </div>
-        <div class="btn-box">
-          <a href="">
-            Xem thêm
-          </a>
-        </div>
       </div>
     </div>
   </div>

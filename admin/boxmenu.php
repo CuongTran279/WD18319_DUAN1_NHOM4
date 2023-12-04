@@ -17,6 +17,8 @@
     </script>
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="https://kit.fontawesome.com/8c204d0fdf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    
     <title>Document</title>
 </head>
 

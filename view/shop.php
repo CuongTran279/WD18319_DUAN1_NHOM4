@@ -72,9 +72,12 @@
           
         </div>
         <div class="btn-box">
-          <a href="">
+          <form action="index.php?act=spall" method="post">
+            <a href="index.php?act=xemthem" name="xemthem">
             Xem thêm
           </a>
+          </form>
+          
         </div>
       </div>
     </div>
