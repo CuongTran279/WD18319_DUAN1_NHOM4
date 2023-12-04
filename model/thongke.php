@@ -30,4 +30,14 @@
         $tke =pdo_query($sql);
         return $tke;
     }
+    function count_sp_dm(){
+        $sql = "SELECT categories.name , COUNT(products.id) as countsp from products LEFT JOIN categories ON categories.id = products.id_categories GROUP by categories.id";
+        $sp_dm =pdo_query($sql);
+        return $sp_dm;
+    }
+    function slsp(){
+        $sql2 = "select count(cart_details.id_pro) as slsp,cart.id from cart_details LEFT JOIN cart ON cart_details.id_cart = cart.id GROUP BY cart.id;";
+        $tk2 = pdo_query($sql2);
+        return $tk2;
+    }
 ?>

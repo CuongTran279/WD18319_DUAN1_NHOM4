@@ -88,7 +88,7 @@
                             <div class="card mb-3 widget-chart">
                                 <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
                                     <h5>
-                                        Tổng doanh mục
+                                        Tổng danh mục
                                     </h5>
                                 </div>
                                 <?php
@@ -117,142 +117,174 @@
                             </div>
                         </a>
                     </div>
+                    
                 </section>
                 <section class="row">
-                    <div class="col-sm-12 col-md-6 col xl-6">
-                        <div class="card chart">
-                            <form action="#" method="post">
-                                <div class="input-group mb-3">
-                                    <input type="date" class="form-control" placeholder="Username"
-                                        aria-label="Username">
-                                    <span class="input-group-text">Đến ngày</span>
-                                    <input type="date" class="form-control" placeholder="Server" aria-label="Server">
-                                    <button type="button" class="btn btn-primary">Xem</button>
-                                </div>
-                            </form>
-                            <p>Tổng doanh thu: <span>100.000.000 VND</span></p>
-                            <table class="revenue table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Doanh thu</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>GIA001</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>GIA002</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>GIA003</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>GIA004</td>
-                                        <td>100.000</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="col-sm-12 col-md-6 col xl-6" >
+                        <div id="columnchart_material" style="height: 250px;background-color: #fff;"></div>
+                        <div id="columnchart" style="height: 250px;background-color: #ccc;"></div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
-                        <div class="card chart">
-                            <h4>Đơn hàng mới</h4>
-                            <table class="revenue table table-hover">
-                                <thead>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Trạng thái</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>GIA001</td>
-                                        <td>Chờ duyệt</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GIA002</td>
-                                        <td>Đã duyệt</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GIA003</td>
-                                        <td>Chờ TT</td>
-                                    </tr>
-                                    <tr>
-                                        <td>GIA004</td>
-                                        <td>Đã duyệt</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <div id="piechart" style="width: 900px; height: 500px;"></div>
                     </div>
-                    <div class="col-sm-12 col-md-6 col-xl-3">
-                        <div class="card chart">
-                            <h4>Khách hàng mới</h4>
-                            <table class="revenue table table-hover">
-                                <thead>
-                                    <th>#</th>
-                                    <th>Username</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>giangcoder1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>giangcoder2</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>giangcoder3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    
                 </section>
             </div>
         </div>
     </div>
     <script src="assets/js/main.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <?php
+    require "../carbon/autoload.php";
+    use Carbon\Carbon;
+    // use Carbon\CarbonInterval;
+    // //printf("Now: %s", Carbon::now('Asia/Ho_Chi_Minh'));
+    $subdays = Carbon::now('Asia/Ho_Chi_Minh')->subdays(365)->toDateString();
+    $now = Carbon::now('Asia/Ho_Chi_Minh');
+    $now->addDay();
+    $sql = "SELECT *,DATE(created_at) as created_at1 FROM cart WHERE created_at >= '$subdays' and created_at <='$now' order by created_at ASC";
+    $tk = pdo_query($sql);
+    $sql2 = "select count(cart_details.id_pro) as slsp,cart.id from cart_details LEFT JOIN cart ON cart_details.id_cart = cart.id GROUP BY cart.id;";
+    $tk2 = pdo_query($sql2);
+    //var_dump($tk);exit;
+    // foreach($tk as $item){
+    //     extract($item);
+        for($i =0;$i < count($tk);$i++){
+            $chart_data[] = array(
+                'date' => $tk[$i]['created_at1'],
+                'sales' => $tk[$i]['total'],
+                'quantity' => $tk2[$i]['slsp'],
+            );
+        }
+    //}
+    // foreach($tk2 as $item2){
+    //     extract($item2);
+    // }
+    
+    //echo $data = json_encode($chart_data);
+    //var_dump($chart_data);exit;
+    ?>
     <script>
-        new DataTable('#example');
+        // $(document).ready(function(){
+        //     thongke();
+        //     var char = new Morris.Bar({
+        //     element: 'myfirstchart',
+        //     // data: [
+        //     //     { year: '2008', value: 20, quantity: 4, sales: 20 },
+        //     //     { year: '2009', value: 10, quantity: 22, sales: 20 },
+        //     //     { year: '2010', value: 5 , quantity: 120, sales: 20},
+        //     //     { year: '2011', value: 5, quantity: 20 , sales: 20},
+        //     //     { year: '2012', value: 20, quantity: 42, sales: 20}
+        //     // ],
+        //     xkey: 'date',
+        //     ykeys: ['date','sales','quantity'],
+        //     labels: ['Đơn hàng', 'Doanh thu', 'Số lượng']
+        //     });
+        // })
+        // function thongke(){
+        //     var text = '365 ngày qua';
+        //     $.ajax({
+        //         url:"../thongke.php",
+        //         method:"POST",
+        //         dataType:"JSON",
+        //         success:function(data){
+        //             char.setData(data);
+        //             $('#text-date').text(text);
+        //         }
+        //     })
+        // }
+    </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Danh mục', 'Số lượng'],
+            ['<?php echo $sp_dm[0]['name']?>', <?php echo$sp_dm[0]['countsp']?>],
+            ['<?=$sp_dm[1]['name']?>', <?=$sp_dm[1]['countsp']?>],
+            ['<?=$sp_dm[2]['name']?>', <?=$sp_dm[2]['countsp']?>],
+            ['<?=$sp_dm[3]['name']?>', <?=$sp_dm[3]['countsp']?>]
+            
+        ]);
+
+        var options = {
+          title: 'Sản phẩm theo danh mục'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Date', 'Doanh thu'],
+          <?php
+          $tong = count($chart_data);
+          $i = 1;
+            foreach($chart_data as $tk3){
+                extract($tk3);
+                if($i==$tong) $dp = "";else $dp =",";
+                echo "['".$tk3['date']."',".$tk3['sales']."]".$dp;
+                $i+=1;
+            }
+          ?>
+        
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Tổng doanh thu',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Date', 'Sản phẩm'],
+          <?php
+          $tong = count($chart_data);
+          $i = 1;
+            foreach($chart_data as $tk3){
+                extract($tk3);
+                if($i==$tong) $dp = "";else $dp =",";
+                echo "['".$tk3['date']."',".$tk3['quantity']."]".$dp;
+                $i+=1;
+            }
+          ?>
+        //   ['2014', 1000, 400],
+        //   ['2015', 1170, 460],
+        //   ['2016', 660, 1120],
+        //   ['2017', 1030, 540]
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Tổng sản phẩm đã bán',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
     </script>
 </body>
 
