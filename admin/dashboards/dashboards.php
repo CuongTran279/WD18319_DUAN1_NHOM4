@@ -118,16 +118,19 @@
                         </a>
                     </div>
                     
-                </section>
-                <section class="row">
+                </section><br>
+                <section class=" statistics row">
                     <div class="col-sm-12 col-md-6 col xl-6" >
-                        <div id="columnchart_material" style="height: 250px;background-color: #fff;"></div>
-                        <div id="columnchart" style="height: 250px;background-color: #ccc;"></div>
+                        <div id="columnchart_material" style="height: 500px;background-color: #fff;"></div><br>
+                        <div id="columnchart" style="height: 500px;background-color: #ccc;"></div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
-                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+                        <div id="piechart" style="width: 800px; height: 500px;"></div><br>
+                        <div id="barchart2" style="width: 800px; height: 500px;"></div>
                     </div>
-                    
+                </section><br>
+                <section class="row">
+                <div id="barchart3" style="height: 500px;"></div>
                 </section>
             </div>
         </div>
@@ -158,6 +161,7 @@
                 'quantity' => $tk2[$i]['slsp'],
             );
         }
+        //var_dump($chart_data);exit;
     //}
     // foreach($tk2 as $item2){
     //     extract($item2);
@@ -283,6 +287,68 @@
 
         var chart = new google.charts.Bar(document.getElementById('columnchart'));
 
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tên', 'Số lượng'],
+          <?php
+            $sp = select_lb();
+            $tong = count($sp);
+            $i = 1;
+            foreach($sp as $item){
+                extract($item);
+                if($i==$tong) $dp = "";else $dp =",";
+                if($luotban != 0){
+                    echo "['".$name."',".$luotban."]".$dp;
+                }
+                $i+=1;
+            }
+          ?>
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Sản phẩm được bán nhiều nhất',
+          },
+          bars: 'horizontal' // Required for Material Bar Charts.
+        };
+        var chart = new google.charts.Bar(document.getElementById('barchart2'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Tên', 'Số lượng'],
+          <?php
+            $sp = select_lx();
+            $tong = count($sp);
+            $i = 1;
+            foreach($sp as $item){
+                extract($item);
+                if($i==$tong) $dp = "";else $dp =",";
+                    echo "['".$name."',".$view."]".$dp;
+                $i+=1;
+            }
+          ?>
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Sản phẩm được xem nhiều nhất',
+          },
+          bars: 'horizontal' // Required for Material Bar Charts.
+        };
+        var chart = new google.charts.Bar(document.getElementById('barchart3'));
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>

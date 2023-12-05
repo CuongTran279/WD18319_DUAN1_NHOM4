@@ -138,6 +138,8 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 $id = $_GET['idsp'];
                 $one = select_id_products($id);
                 extract($one);
+                $luotxem = $view + 1;
+                updt_view($id);
                 $spcl = sanpham_select_cungloai($id,$id_categories);
                 include "view/spct.php";
             }else{
@@ -323,6 +325,9 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                         updtCart();
                         foreach($order as $key=>$product){
                             //var_dump($order);exit;
+                            $idsp = $product['id'];
+                            $luotban += $_SESSION['cart'][$product['id']];
+                            updt_luotban($luotban,$idsp);
                             $noisql .= "('$id_cart','" . $product['id'] . "','" . $product['price'] . "','" . $product['img'] . "','" . $product['name'] . "','" . $_SESSION['cart'][$product['id']] . "')";
                             if($key != (count($order) - 1)){
                                 $noisql .= ",";
