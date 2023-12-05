@@ -67,6 +67,7 @@
               <th>EMAIL</th>
               <th>TOTAL</th>
               <th>PTTT</th>
+              <th>TRẠNG THÁI</th>
               <th></th>
             </tr>
           </thead>
@@ -75,7 +76,7 @@
             $i = 1;
             foreach ($lisCart as $item) {
               extract($item);
-              $Pt = "";
+              $Pt =$tt= "";
               if($pttt == 1){
                 $Pt = "Thanh toán khi nhận hàng";
               }elseif($pttt == 2){
@@ -83,6 +84,15 @@
               }elseif($pttt == 3){
                 $Pt = "Ghi nợ";
               }
+              if($trangthai == 1){
+                $tt = "Đã xác nhận đơn hàng";
+              }elseif($trangthai == 3){
+                $tt = "Đã giao xong";
+              }elseif($trangthai == 0){
+                $tt = "Chờ xác nhận";
+              }elseif($trangthai == 2){
+                  $tt = "Đang giao hàng";
+                }
               $sua = "index.php?act=suaDh&id=" . $id;
               echo '<tr>
                     <td><input type="checkbox" class="form-check-input"></td>
@@ -94,7 +104,8 @@
                     <td>' . $address . '</td>
                     <td>' . $email . '</td>
                     <td>' . $total . '</td>
-                    <td>' . $pttt . ' - '.$Pt.'</td>
+                    <td>'.$Pt.'</td>
+                    <td>'.$tt.'</td>
                     <td>
                         <a href="' . $sua . '" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Chi tiết đơn hàng</a>
                     </td></tr>';
@@ -113,6 +124,7 @@
               <th>EMAIL</th>
               <th>TOTAL</th>
               <th>PTTT</th>
+              <th>TRẠNG THÁI</th>
               <th></th>
             </tr>
           </tfoot>

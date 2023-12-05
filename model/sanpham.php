@@ -16,6 +16,18 @@
         $lissp = pdo_query($sql);
         return $lissp;
     }
+    function select_lb(){
+        $sql = "SELECT * FROM products  order by luotban desc limit 0,8";
+        $lissp = pdo_query($sql);
+        return $lissp;
+
+    }
+    function select_lx(){
+        $sql = "SELECT * FROM products  order by view desc limit 0,8";
+        $lissp = pdo_query($sql);
+        return $lissp;
+
+    }
     function delete_products($id){
         $sql = "DELETE FROM products WHERE id=".$id;
         pdo_execute($sql);
@@ -61,5 +73,12 @@
         $lissp = pdo_query($sql);
         return $lissp;
     }
-    
+    function updt_view($id){
+        $sql = "UPDATE products SET view = view +1 WHERE id =".$id;
+        pdo_execute($sql);
+    }
+    function updt_luotban($luotban,$idsp){
+        $sql = "UPDATE products SET luotban = ".$luotban." WHERE id =".$idsp;
+        pdo_execute($sql);
+    }
 ?>

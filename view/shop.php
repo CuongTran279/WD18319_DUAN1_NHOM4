@@ -58,7 +58,7 @@
                     <h6>Price<span>$'.$price.'</span></h6>
                   </div>
                 </a>
-                <form action="index.php?act=addCart" method="post">
+                <form action="" method="post">
                   <input type="hidden" name="id" value="'.$id.'">
                   <input type="hidden" name="img" value="'.$hinh.'">
                   <input type="hidden" name="name" value="'.$name.'">
