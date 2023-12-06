@@ -41,11 +41,19 @@
             case 'updtDh':
                 if(isset($_POST['updtDh']) && ($_POST['updtDh'])){
                     $id = $_POST['id'];
+                    $cart = select_id_cart($id);
                     $trangthai = $_POST['trangthai'];
-                    update_trangthai($trangthai,$id);
+                    if($trangthai < $cart[0]['trangthai']){
+                        echo '<script type="text/javascript"> window.onload = function () { alert("Không thể thay đổi trạng thái đơn hàng, vui lòng kiểm tra logic"); }</script>';
+                        include "qldonhang/ctorder.php";
+                    }else{
+                        update_trangthai($trangthai,$id);
+                        echo '<script type="text/javascript"> window.onload = function () { alert("Update thành công"); }</script>';
+                        $lisCart = select_all_cart();
+                        include "qldonhang/order.php";
+                    }
+                    
                 }
-                $lisCart = select_all_cart();
-                include "qldonhang/order.php";
             break;
 //Đơn hàng
 
@@ -58,6 +66,7 @@
                 if(isset($_GET['id']) && ($_GET['id'] >0)) {
                     $id = $_GET['id'];
                     binhluan_delete($id);
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Xóa thành công"); }</script>';
                 }
                 $lisbl = binhluan_select_all(0);
                 include "qlbinhluan/comment.php";
@@ -76,7 +85,7 @@
                 if(isset($_POST['addDm']) && ($_POST['addDm'])){
                     $name = $_POST['name'];
                     insert_danhmuc($name);
-                    $thongbao = "Thêm danh mục mới thành công";
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Thêm thành công"); }</script>';
                 }
                 include "qldanhmuc/addDanhmuc.php";
             break;
@@ -84,6 +93,7 @@
                 if(isset($_GET['id']) && ($_GET['id'] >0)) {
                     $id = $_GET['id'];
                     delete_danhmuc($_GET['id']);
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Xóa thành công"); }</script>';
                 }
                 $lisdm = select_all_danhmuc();
                 include "qldanhmuc/caterogies.php";
@@ -100,7 +110,7 @@
                     $name = $_POST['name'];
                     $id = $_POST['id'];
                     update_danhmuc($name,$id);
-                    $thongbao = "Cập nhật thanh cong";
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Update thành công"); }</script>';
                 }
                 $lisdm = select_all_danhmuc();
                 include "qldanhmuc/caterogies.php";
@@ -133,7 +143,7 @@
                     } else {
                     }
                     insert_sanpham($name,$price,$img,$description,$id_categories);
-                    $thongbao = "Thêm sản phẩm mới thành công";
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Thêm thành công"); }</script>';
                 }
                 $lisdm = select_all_danhmuc();
                 include "qlsanpham/addProduct.php";
@@ -145,6 +155,7 @@
                 }
                 $lisdm = select_all_danhmuc();
                 $lissp = select_all_products();
+                echo '<script type="text/javascript"> window.onload = function () { alert("Xóa thành công"); }</script>';
                 include "qlsanpham/Products.php";
             break;
             case 'suasp':
@@ -170,10 +181,10 @@
                       //echo "Sorry, there was an error uploading your file.";
                     }
                     update_products($name,$id_categories,$price,$description,$img,$id);
-                    $thongbao = "Cập nhật thanh cong";
-                    header("Location:index.php?act=products");
+                    echo '<script type="text/javascript"> window.onload = function () { alert("update thành công"); }</script>';
                 }
                 $lissp = select_all_products();
+                $lisdm = select_all_danhmuc();
                 include "qlsanpham/Products.php";
             break;
 // Sản phẩm
@@ -187,6 +198,7 @@
                 if(isset($_GET['id']) && ($_GET['id'] >0)) {
                     $id = $_GET['id'];
                     delete_user($id);
+                    echo '<script type="text/javascript"> window.onload = function () { alert("Xóa thành công"); }</script>';
                 }
                 $listk = select_all_user();
                 include "qlthanhvien/user.php";
@@ -203,7 +215,7 @@
                     $id = $_POST['id'];
                     $role = $_POST['role'];
                     update_user($role,$id);
-                    $thongbao = "Cập nhật thanh cong";
+                    echo '<script type="text/javascript"> window.onload = function () { alert("update thành công"); }</script>';
                 }
                 $listk = select_all_user();
                 include "qlthanhvien/user.php";

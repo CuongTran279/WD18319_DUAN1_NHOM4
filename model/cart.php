@@ -26,7 +26,7 @@
         return $listCart;
     }
     function select_id_cart($id){
-        $sql = "SELECT cart.id,cart.pttt,cart.trangthai,cart.email,cart.name,cart.tel,cart.address,cart.total,cart_details.name as product_name,cart_details.price,cart_details.img,cart_details.quantity FROM cart INNER JOIN cart_details ON cart.id = cart_details.id_cart WHERE cart.id =".$id;
+        $sql = "SELECT cart.id,cart.created_at,cart.pttt,cart.trangthai,cart.email,cart.name,cart.tel,cart.address,cart.total,cart_details.name as product_name,cart_details.price,cart_details.img,cart_details.quantity FROM cart INNER JOIN cart_details ON cart.id = cart_details.id_cart WHERE cart.id =".$id;
         $cart = pdo_query($sql);
         return $cart;
     }

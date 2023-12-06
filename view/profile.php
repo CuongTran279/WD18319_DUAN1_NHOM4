@@ -75,6 +75,7 @@
                           $Pt = "Ghi nợ";
                         }
                         $xoa = "index.php?act=xoadh&id=$id";
+                        $xacnhan = "index.php?act=xndh&id=$id";
                 ?>
                 <div class="border mb-5" style="padding: 20px;">
                     <div class="form-group">
@@ -99,7 +100,7 @@
                     <a href="index.php?act=ctdh&id=<?=$id?>"><button class="btn btn-dark">Chi tiết đơn hàng</button></a>
                     <?php if($trangthai == 0){?>
                     <a href="<?=$xoa?>"><button class="btn btn-danger">Xóa đơn hàng</button></a>
-                    <?php }elseif($trangthai == 3){?>
+                    <?php }elseif($trangthai == 2){?>
                     <a href="<?=$xacnhan?>"><button class="btn btn-primary">Tôi đã nhận được hàng</button></a><?php }?>
                 </div>
                 <?php }?>

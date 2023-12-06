@@ -74,6 +74,10 @@
                         <label>Địa chỉ :</label>
                         <input class="form-control" name="description"  readonly value="<?=$cart[0]['address']?>"  ></input>
                     </div>
+                    <div class="form-group">
+                        <label>Ngày đặt hàng :</label>
+                        <input class="form-control" name="description"  readonly value="<?=$cart[0]['created_at']?>"  ></input>
+                    </div>
                     <?php
                         $Pt = "";
                         if($cart[0]['pttt'] == 1){
@@ -92,15 +96,19 @@
                         $tt = "";
                         if($cart[0]['trangthai'] == 0){
                             $tt = "Chờ xác nhận đơn hàng";
+                            $style = "color:red";
                         }
                         elseif($cart[0]['trangthai'] == 1){
                             $tt = "Đã xác nhận đơn hàng";
+                            $style = "color:blue";
                         }
                         elseif($cart[0]['trangthai'] == 2){
                             $tt = "Đang vận chuyển đơn hàng";
+                            $style = "color:black";
                         }
                         elseif($cart[0]['trangthai'] == 3){
                             $tt = "Giao thành công đơn hàng";
+                            $style = "color:green";
                         }
                         echo $tt;
                     ?> </label><br>
@@ -109,7 +117,6 @@
                         <option value="0">Chờ xác nhận</option>
                         <option value="1">Đã xác nhận</option>
                         <option value="2">Đang vận chuyển</option>
-                        <option value="3">Giao thành công</option>
                     </select><br>
                     <?php
                     ?>

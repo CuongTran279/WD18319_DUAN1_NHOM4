@@ -12,6 +12,7 @@
             <ul class="list-group list-group-flush">
               <?php
                   foreach($dsdm as $dm){
+                    extract($dm);
                       $linkdm = "index.php?act=sanpham&id_categories=".$dm['id'];
                       echo '<li class="list-group-item"><a class="text-dark" href="'.$linkdm.'">'.$dm['name'].'</a></li>';}
               ?>
@@ -32,7 +33,7 @@
       <div class="col-8 ">
         <div class="heading_container heading_center">
           <h2>
-            Sản phẩm - <strong><?=$dm['name']?></strong>
+            Sản phẩm - <strong><?=$dm1['name']?></strong>
           </h2>
         </div>
         <div class="row">

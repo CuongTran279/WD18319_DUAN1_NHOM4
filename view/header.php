@@ -55,7 +55,6 @@
                 <a href="index.php">Trang chủ</a>
                 <a href="index.php?act=about">Về chúng tôi</a>
                 <a href="index.php?act=shop">Danh mục</a>
-                <a href="index.php?act=blog">Blog</a>
                 <?php 
                   // $check = check_taikhoan($name, $password);
                   // $_SESSION['user'] = $check;

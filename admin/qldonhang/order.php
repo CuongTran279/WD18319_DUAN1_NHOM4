@@ -76,7 +76,7 @@
             $i = 1;
             foreach ($lisCart as $item) {
               extract($item);
-              $Pt =$tt= "";
+              $Pt =$tt= $style="";
               if($pttt == 1){
                 $Pt = "Thanh toán khi nhận hàng";
               }elseif($pttt == 2){
@@ -86,12 +86,16 @@
               }
               if($trangthai == 1){
                 $tt = "Đã xác nhận đơn hàng";
+                $style = "color:blue";
               }elseif($trangthai == 3){
                 $tt = "Đã giao xong";
+                $style = "color:green";
               }elseif($trangthai == 0){
                 $tt = "Chờ xác nhận";
+                $style = "color:red";
               }elseif($trangthai == 2){
                   $tt = "Đang giao hàng";
+                  $style = "color:black";
                 }
               $sua = "index.php?act=suaDh&id=" . $id;
               echo '<tr>
@@ -105,7 +109,7 @@
                     <td>' . $email . '</td>
                     <td>' . $total . '</td>
                     <td>'.$Pt.'</td>
-                    <td>'.$tt.'</td>
+                    <td style="'.$style.'">'.$tt.'</td>
                     <td>
                         <a href="' . $sua . '" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i> Chi tiết đơn hàng</a>
                     </td></tr>';
