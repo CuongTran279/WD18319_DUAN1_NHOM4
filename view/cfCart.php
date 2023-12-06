@@ -9,28 +9,34 @@
                         Thông tin người đặt
                     </h2>
                 </div>
+                <?php
+                $user = SELECT_USERID();
+                if(is_array($user)){
+                    extract($user);
+                }
+                ?>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                        <input type="text" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" value="<?=$email?>">
                         <label for="floatingInput">Email</label>
                         <p class="text-danger"><?php echo $errEmail ?></p>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control " id="floatingInput" name="name" placeholder="name@example.com">
+                        <input type="text" class="form-control " id="floatingInput" name="name" placeholder="name@example.com" value="<?=$name?>">
                         <label for="floatingInput">Tên</label>
                         <p class="text-danger"><?php echo $errName ?></p>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control " name="address" id="floatingInput" placeholder="name@example.com">
+                        <input type="text" class="form-control " name="address" id="floatingInput" placeholder="name@example.com" value="<?=$address?>">
                         <label for="floatingInput">Địa chỉ</label>
                         <p class="text-danger"><?php echo $errAddress ?></p>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control " name="phone" id="floatingInput" placeholder="name@example.com">
+                        <input type="text" class="form-control " name="phone" id="floatingInput" placeholder="name@example.com" value="<?=$phone?>">
                         <label for="floatingInput">Số điện thoại</label>
                         <p class="text-danger"><?php echo $errPhone ?></p>
                     </div>
                     <select class="form-select" name="pttt" aria-label="Default select example">
-                        <option selected>Phương thức thanh toán</option>
+                        <option value="0" selected>Phương thức thanh toán</option>
                         <option value="1">Thanh toán khi nhận hàng</option>
                         <option value="2">Chuyển khoản</option>
                         <option value="3">Ghi nợ.</option>

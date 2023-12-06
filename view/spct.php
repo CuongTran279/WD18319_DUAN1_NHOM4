@@ -28,16 +28,12 @@
                     </div>
                     <div class="form-outline pb-2 sl ">
                         <div class="title_sl pb-2">Số lượng</div>
-                        <div class="bt_sl row" >
-                            <div class="col">
-                                <button class="btn btn-dark" onclick="minus(this)" id="minus">-</button>
-                            </div>
-                            <div class="col" style="width:100px;margin-left:-50px">
+                        <div class="d-flex flex-row mb-3">
+                            <span name="minus" class="p-2 btn btn-dark minus" style="height: 40px;">-</span>
+                            <div  class="p-2" style="width:70px">
                                 <input type="number" id="typeNumber" name="quantity[<?=$id?>]" class="form-control quantity" min="1" value="1">
                             </div>
-                            <div class="col" >
-                                <button class="btn btn-dark" onclick="plus(this)" id="plus">+</button>
-                            </div>
+                            <span class="p-2 btn btn-dark plus" style="height: 40px;" name="plus">+</span>
                         </div>
                     </div>
                     <input type="hidden" name="id" value="<?=$id?>">
@@ -97,4 +93,20 @@
             </div>
         </div>
     </div>
+    <script>
+        const plus = document.querySelector(".plus");
+        const minus = document.querySelector(".minus");
+        const num = document.querySelector(".quantity");
+        let a =1;
+        plus.addEventListener("click",function(){
+            a++;
+            num.value = a;
+        })
+        minus.addEventListener("click",function(){
+            if(a>1){
+                a--;
+                num.value = a;
+            }
+        })
+    </script>
 </div>

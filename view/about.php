@@ -5,22 +5,19 @@
       <div class="row">
         <div class="col-md-6">
           <div class="img-box">
-            <img src="images/about-img.jpg" alt="">
+            <img src="view/images/about-img.jpg" alt="">
           </div>
         </div>
         <div class="col-md-6">
-          <div class="detail-box">
+        <div class="detail-box">
             <div class="heading_container">
               <h2>
-                About Us
+                Về chúng tôi
               </h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+              Nhóm 4 gồm 3 thành viên Cường, Thái và Tuyên .Mỗi người có một công việc khác nhau.
             </p>
-            <a href="">
-              Read More
-            </a>
           </div>
         </div>
       </div>

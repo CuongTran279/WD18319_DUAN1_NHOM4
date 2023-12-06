@@ -129,6 +129,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             }else{
                 $id_categories = 0;
             }
+            $dm1 =select_id_danhmuc($id_categories);
             $dssp = select_all_products($kyw,$id_categories);
             $tendm =sanpham_tendm_select_by_id($id_categories);
             include "view/spcdm.php";
@@ -214,7 +215,8 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     }
                     if ($re_pass == $password && empty($tk['name'])) {
                         insert_taikhoan($name, $password, $email, $phone, $address);
-                        $thongbao = "Đăng ký thành công";
+                        echo '<script type="text/javascript"> window.onload = function () { alert("Đăng ký thành công"); }</script>';
+                        header("Location:index.php?act=login");
                     }
                 }
             }
@@ -341,6 +343,15 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 }
             }
             include "view/cfCart.php";
+        break;
+        case 'xndh':
+            if(isset($_GET['id'])){
+                $id =$_GET['id'];
+                $sql = "UPDATE cart set trangthai = 3 where id =".$id;
+                pdo_execute($sql);
+            }
+            $eachcart = select_iduser_each_cart($_SESSION['user']['id']);
+            include "view/profile.php";
         break;
         case 'mhtc':
             include "view/mhtc.php";
