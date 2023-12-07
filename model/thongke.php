@@ -20,6 +20,11 @@
         $sp = pdo_query_one($sql);
         return $sp;
     }
+    function sum_dt(){
+        $sql = "SELECT SUM(total) as tt from cart";
+        $sp = pdo_query_one($sql);
+        return $sp;
+    }
     function thongke_date(){
         $sql = "SELECT DATE(created_at) FROM cart";
         $tke =pdo_query($sql);

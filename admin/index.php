@@ -13,6 +13,7 @@
     $sldm = count_dm();
     $sldh = count_dh();
     $sp_dm = count_sp_dm();
+    $tt12 =  sum_dt();
     $tk2 = slsp();
     if(isset($_GET["act"])&& $_GET["act"] != ""){
         $act = $_GET['act'];
