@@ -44,6 +44,22 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         case 'shop':
             include "view/shop.php";
         break;
+        case 'qmk':
+            if(isset($_POST['qmk']) && ($_POST['qmk'])){
+                $email =$_POST['email'];
+                $name = $_POST['name'];
+                $qmk=qmk($email,$name);
+                if(is_array($qmk)){
+                    $thongbao = 'Mật khẩu của bạn là : "'.$qmk['pass'].'" ';
+                }else{
+                    if(!empty($name) && !empty($email)){
+                        $thongbao = "Thông tin không đúng, vui lòng kiểm tra lại";
+                    }
+                }
+                
+            }
+            include "view/quenmk.php";
+        break;
         case 'xemthem':
             if(isset($_POST['kyw']) && ($_POST['kyw']!="")){
                 $kyw=$_POST['kyw'];

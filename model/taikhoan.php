@@ -49,4 +49,9 @@
             $sql = "UPDATE user SET name = '$name', phone = '$phone' , address = '$address ', img = '$img', email = '$email' WHERE id =".$id;
         pdo_execute($sql);
     }
+    function  qmk($email,$name){
+        $sql = "SELECT * FROM user WHERE name = '".$name."' AND email = '".$email."'";
+        $listk = pdo_query_one($sql);
+        return $listk;
+    }
 ?>

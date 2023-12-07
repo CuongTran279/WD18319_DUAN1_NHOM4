@@ -117,7 +117,24 @@
                             </div>
                         </a>
                     </div>
-                    
+                    <div class="col-sm-12 col-md-6 col-xl-3">
+                        <a href="index.php?act=user">
+                            <div class="card mb-3 widget-chart">
+
+                                <div class="widget-subheading fsize-1 pt-2 opacity-10 text-warning font-weight-bold">
+                                    <h5>
+                                        Tổng doanh thu
+                                    </h5>
+                                </div>
+                                <?php
+                                    if(is_array($tt12)){
+                                        extract($tt12);
+                                    }
+                                ?>
+                                <span class="widget-numbers"><?=$tt?></span>
+                            </div>
+                        </a>
+                    </div>
                 </section><br>
                 <section class=" statistics row">
                     <div class="col-sm-12 col-md-6 col xl-6" >
@@ -129,8 +146,11 @@
                         <div id="barchart2" style="width: 800px; height: 500px;"></div>
                     </div>
                 </section><br>
-                <section class="row">
-                <div id="barchart3" style="height: 500px;"></div>
+                <section class="row statistics">
+                    <div class="col-sm-12 col-md-6 col xl-6" >
+                        <div id="barchart3" style="height: 500px;"></div></div>
+                        <div class="col-sm-12 col-md-6 col-xl-3">
+                        <div id="barchart4" style="height: 500px;width: 800px;"></div></div>
                 </section>
             </div>
         </div>
@@ -147,7 +167,7 @@
     $subdays = Carbon::now('Asia/Ho_Chi_Minh')->subdays(365)->toDateString();
     $now = Carbon::now('Asia/Ho_Chi_Minh');
     $now->addDay();
-    $sql = "SELECT *,DATE(created_at) as created_at1 FROM cart WHERE created_at >= '$subdays' and created_at <='$now' order by created_at ASC";
+    $sql = "SELECT *,DATE(created_at) as created_at1 FROM cart WHERE created_at >= '$subdays' and created_at <='$now' order by created_at DESC ";
     $tk = pdo_query($sql);
     $sql2 = "select count(cart_details.id_pro) as slsp,cart.id from cart_details LEFT JOIN cart ON cart_details.id_cart = cart.id GROUP BY cart.id;";
     $tk2 = pdo_query($sql2);
@@ -247,7 +267,7 @@
 
         var options = {
           chart: {
-            title: 'Tổng doanh thu',
+            title: 'Thống kê doanh thu',
           }
         };
 

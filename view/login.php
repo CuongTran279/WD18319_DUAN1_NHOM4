@@ -24,7 +24,7 @@
                     </label>
                 </div>
                 <p>Chưa có tài khoản ? <a class="link-opacity-75-hover" href="index.php?act=dangky">Đăng ký</a></p>
-                <a class="link-opacity-75-hover" href="">Quên mật khẩu</a></p>
+                <a class="link-opacity-75-hover" href="index.php?act=qmk">Quên mật khẩu</a></p>
                 <input type="submit" class="btn btn-primary" name="dangnhap" value="Đăng Nhập">
             </form>
             <?php
