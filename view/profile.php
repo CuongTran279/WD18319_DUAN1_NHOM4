@@ -103,7 +103,11 @@
                     <?php }elseif($trangthai == 2){?>
                     <a href="<?=$xacnhan?>"><button class="btn btn-primary">Tôi đã nhận được hàng</button></a><?php }?>
                 </div>
-                <?php }?>
+                <?php }
+                    if(empty($eachcart)){
+                        echo 'Bạn chưa có đơn hàng nào';
+                    }
+                ?>
             </div>
         </div>
     </div>

@@ -139,7 +139,8 @@
                 <section class=" statistics row">
                     <div class="col-sm-12 col-md-6 col xl-6" >
                         <div id="columnchart_material" style="height: 500px;background-color: #fff;"></div><br>
-                        <div id="columnchart" style="height: 500px;background-color: #ccc;"></div>
+                        <!-- <div id="columnchart" style="height: 500px;background-color: #ccc;"></div> -->
+                        <div id="barchart3" style="height: 500px;"></div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-xl-3">
                         <div id="piechart" style="width: 800px; height: 500px;"></div><br>
@@ -148,9 +149,11 @@
                 </section><br>
                 <section class="row statistics">
                     <div class="col-sm-12 col-md-6 col xl-6" >
-                        <div id="barchart3" style="height: 500px;"></div></div>
+                        
+                    
+                    </div>
                         <div class="col-sm-12 col-md-6 col-xl-3">
-                        <div id="barchart4" style="height: 500px;width: 800px;"></div></div>
+                        <div id="barchart4" style="height: 500px;"></div></div>
                 </section>
             </div>
         </div>
@@ -169,7 +172,7 @@
     $now->addDay();
     $sql = "SELECT *,DATE(created_at) as created_at1 FROM cart WHERE created_at >= '$subdays' and created_at <='$now' order by created_at DESC ";
     $tk = pdo_query($sql);
-    $sql2 = "select count(cart_details.id_pro) as slsp,cart.id from cart_details LEFT JOIN cart ON cart_details.id_cart = cart.id GROUP BY cart.id;";
+    $sql2 = "SELECT SUM(cart_details.quantity) as slsp,cart.id from cart_details LEFT JOIN cart ON cart_details.id_cart = cart.id GROUP BY cart.id;";
     $tk2 = pdo_query($sql2);
     //var_dump($tk);exit;
     // foreach($tk as $item){
@@ -178,7 +181,7 @@
             $chart_data[] = array(
                 'date' => $tk[$i]['created_at1'],
                 'sales' => $tk[$i]['total'],
-                'quantity' => $tk2[$i]['slsp'],
+                'quantity' => $tk2[$i]['slsp']
             );
         }
         //var_dump($chart_data);exit;
@@ -288,10 +291,12 @@
           $i = 1;
             foreach($chart_data as $tk3){
                 extract($tk3);
+                
                 if($i==$tong) $dp = "";else $dp =",";
                 echo "['".$tk3['date']."',".$tk3['quantity']."]".$dp;
                 $i+=1;
             }
+            //var_dump($tk3);exit;
           ?>
         //   ['2014', 1000, 400],
         //   ['2015', 1170, 460],

@@ -15,7 +15,7 @@
                 </div>
                 <div class="col pr-4 pl-4 ctsp">
                     <div class="row">
-                        <p>Mã Sản phẩm : <?=$id?></p>
+                        <p >Mã Sản phẩm : <?=$id?></p>
                     </div>
                     <div class="row">
                         <p>Tên sản phẩm : <?=$name?></p>

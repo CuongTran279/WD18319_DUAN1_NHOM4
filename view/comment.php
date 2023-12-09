@@ -42,7 +42,13 @@
                             <td>'.$name.'</td>
                             <td>'.$content.'</td>
                             <td>'.$date.'</td></tr>';
-                        }
+                    }
+                    if(empty($dsbl)){
+                        echo "<tr>
+                            <td>Sản phẩm chưa có bình luận nào</td>
+                            <td></td> <td></td> <td></td>
+                            </tr>";
+                    }
                 ?>
             </tbody>
         </table>

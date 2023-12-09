@@ -1,5 +1,5 @@
 <!-- info section -->
-<section class="info_section layout_padding2">
+<section class="info_section layout_padding2" >
   <div class="container" style="text-align: center;">
     Copyright @2023 TEAM-4
   </div>

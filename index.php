@@ -129,6 +129,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             if(isset($_GET['id']) && ($_GET['id']>0)){
                 $id = $_GET['id'];
                 delete_cart($id);
+                echo '<script type="text/javascript"> window.onload = function () { alert("Xóa thành công"); }</script>';
             }
             $eachcart = select_iduser_each_cart($_SESSION['user']['id']);
             include "view/profile.php";
@@ -232,7 +233,6 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     if ($re_pass == $password && empty($tk['name'])) {
                         insert_taikhoan($name, $password, $email, $phone, $address);
                         echo '<script type="text/javascript"> window.onload = function () { alert("Đăng ký thành công"); }</script>';
-                        header("Location:index.php?act=login");
                     }
                 }
             }
@@ -320,6 +320,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                     }else{
                         foreach($testcart as $item){
                             extract($item);
+                            //var_dump($item);exit;
                             $order[] = $item;
                             $tt += $price * $_SESSION['cart'][$id];
                         }
@@ -365,6 +366,7 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
                 $id =$_GET['id'];
                 $sql = "UPDATE cart set trangthai = 3 where id =".$id;
                 pdo_execute($sql);
+                echo '<script type="text/javascript"> window.onload = function () { alert("Xác nhận thành công"); }</script>';
             }
             $eachcart = select_iduser_each_cart($_SESSION['user']['id']);
             include "view/profile.php";

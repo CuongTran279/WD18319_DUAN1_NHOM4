@@ -80,7 +80,7 @@
                                           <td><img src="'.$hinh.'" alt="" style="width: 60px;height: 70px;"></td>
                                           <td class="text-uppercase">'.$name.'</td>
                                         </a><td class="text-danger ">'.$price.'</td>
-                                        <td><input type="number" readonly name="quantity['.$id.']" id="" value="'.$_SESSION['cart'][$id].'" style="font-size: 20px;"></td>
+                                        <td><input type="number" readonly name="quantity['.$id.']" id="" value="'.$_SESSION['cart'][$id].'" style="font-size: 20px;width:60px"></td>
                                         <td class="text-danger ">'.$price * $_SESSION['cart'][$id].'</td>
                                         </tr>';
                                         $i++;
